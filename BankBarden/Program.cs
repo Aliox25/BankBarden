@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using BankBarden.Data;
+using BankBarden.NorthwindData;
 
 namespace BankBarden;
 
@@ -22,6 +23,11 @@ public class Program
         builder.Services.AddRazorPages();
 
         builder.Services.AddTransient<DataInitializer>();
+
+        builder.Services.AddDbContext<NorthwindInclIdentityContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
 
         var app = builder.Build();
 
