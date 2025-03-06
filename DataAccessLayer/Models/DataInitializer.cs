@@ -1,14 +1,19 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace BankBarden.Data
+namespace DataAccessLayer.Models
 {
     public class DataInitializer
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly BankAppDataContext _dbContext;
         private readonly UserManager<IdentityUser> _userManager;
 
-        public DataInitializer(ApplicationDbContext dbContext, UserManager<IdentityUser> userManager)
+        public DataInitializer(BankAppDataContext dbContext, UserManager<IdentityUser> userManager)
         {
             _dbContext = dbContext;
             _userManager = userManager;

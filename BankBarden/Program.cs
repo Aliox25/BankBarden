@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using BankBarden.Data;
-using BankBarden.NorthwindData;
 using DataAccessLayer.Models;
 
 namespace BankBarden;
