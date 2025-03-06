@@ -1,6 +1,8 @@
 using BankBarden.NorthwindData;
+using BankBarden.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+
 
 namespace BankBarden.Pages
 {
@@ -11,13 +13,6 @@ namespace BankBarden.Pages
         public NorthwindModel(NorthwindInclIdentityContext dbContext)
         {
             _dbContext = dbContext;
-        }
-
-        public class SupplierViewModel
-        {
-            public int Id { get; set; }
-            public string CompanyName { get; set; }
-            public string Region { get; set; }
         }
 
         public List<SupplierViewModel> Suppliers { get; set; } = new List<SupplierViewModel>();
