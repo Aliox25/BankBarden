@@ -27,9 +27,9 @@ public class IndexModel : PageModel
             .GroupBy(c => c.Country)
             .Select(c => new CountryViewModel
             {
-                Country = c.Key
-                //UserCount = c.Count(),
-                //CountryTotalMoney = c.Sum(c => c.Dispositions)
+                Country = c.Key,
+                UserCount = c.Count(),
+                CountryTotalMoney = c.Sum(c => c.Dispositions.Sum(d => d.Account.Balance))
             })
             .ToList();
     }

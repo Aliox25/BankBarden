@@ -9,7 +9,7 @@
     <div class="container">
         <div class="masthead-subheading">Welcome To BankBarden</div>
         <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-        <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+        <a class="btn btn-primary btn-xl text-uppercase" href="#services">Loggin now!</a>
     </div>
 </header>
 
@@ -17,8 +17,8 @@
 <section class="page-section bg-light" id="portfolio">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Portfolio</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h2 class="section-heading text-uppercase">Country</h2>
+            <h3 class="section-subheading text-muted">Hear are difrent countrys that BankBarden have coustomers from.</h3>
         </div>
         <div class="row">
             @foreach (var coun in Model.Countries)
@@ -35,6 +35,7 @@
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">@coun.Country</div>
                             <div class="portfolio-caption-subheading text-muted">@coun.UserCount</div>
+                            <div class="portfolio-caption-subheading text-muted">@coun.CountryTotalMoney SEK</div>
                         </div>
                     </div>
                 </div>
