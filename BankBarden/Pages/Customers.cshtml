@@ -4,3 +4,37 @@
 }
 
 
+
+<div class="add-top-padding">
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Info</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var champ in Model.Customers)
+                {
+                    <tr>
+                        <td>@champ.Id</td>
+                        <td>@champ.Namn</td>
+                        <td>@champ.City</td>
+                        <td>
+                            <a asp-page="/CustomerInfo"
+                               asp-route-champId="@champ.Id"
+                               class="btn btn-primary">
+                                See info
+                            </a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
