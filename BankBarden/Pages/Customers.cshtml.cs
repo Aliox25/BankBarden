@@ -16,9 +16,10 @@ namespace BankBarden.Pages
         }
 
         public List<AllCustomersViewModel> Customers { get; set; }
-
+        public string Country { get; set; }
         public void OnGet(string coun)
         {
+            Country = coun;
             Customers = _dbContext.Customers
                 .Where(c => c.Country == coun)
                 .Select(c => new AllCustomersViewModel

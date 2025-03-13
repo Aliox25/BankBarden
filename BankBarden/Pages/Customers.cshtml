@@ -3,29 +3,64 @@
 @{
 }
 
-
-
 <div class="add-top-padding">
     <div class="container">
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">City</th>
+
+                    <th scope="col">
+                        Name
+                        <a asp-page="/Customers"
+                           asp-route-coun="@Model.Country"
+                           asp-route-sortColumn="Name"
+                           asp-route-sortOrder="asc"
+                           style="text-decoration:none">
+                            <i class="fa-solid fa-angle-up"></i>
+
+                        </a>
+                        <a asp-page="/Customers"
+                           asp-route-coun="@Model.Country"
+                           asp-route-sortColumn="Name"
+                           asp-route-sortOrder="desc"
+                           style="text-decoration:none">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </a>
+                    </th>
+
+                    <th scope="col">
+                        City
+                        <a asp-page="/Customers"
+                           asp-route-coun="@Model.Country"
+                           asp-route-sortColumn="City"
+                           asp-route-sortOrder="asc"
+                           style="text-decoration:none">
+                            <i class="fa-solid fa-angle-up"></i>
+
+                        </a>
+                        <a asp-page="/Customers"
+                           asp-route-coun="@Model.Country"
+                           asp-route-sortColumn="City"
+                           asp-route-sortOrder="desc"
+                           style="text-decoration:none">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </a>
+                    </th>
+
                     <th scope="col">Info</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var champ in Model.Customers)
+                @foreach (var cust in Model.Customers)
                 {
                     <tr>
-                        <td>@champ.Id</td>
-                        <td>@champ.Namn</td>
-                        <td>@champ.City</td>
+                        <td>@cust.Id</td>
+                        <td>@cust.Namn</td>
+                        <td>@cust.City</td>
                         <td>
-                            <a asp-page="/CustomerInfo"
-                               asp-route-champId="@champ.Id"
+                            <a asp-area="" asp-page="/CustomerInfo"
+                               asp-route-custId="@cust.Id"
                                class="btn btn-primary">
                                 See info
                             </a>
