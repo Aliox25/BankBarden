@@ -2,6 +2,7 @@ using BankBarden.ViewModels;
 using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace BankBarden.Pages
 {
@@ -13,10 +14,24 @@ namespace BankBarden.Pages
         {
             _dbContext = dbContext;
         }
-        public List<CustomrtInfoViewmodel> Customer {  get; set; }
-        public void OnGet()
+        public CustomrtInfoViewmodel Customer {  get; set; }
+        public void OnGet(int custId)
         {
+            var quary = _dbContext.Customers
+                .Include(c => c.Dispositions)
+                .ThenInclude(c => c.Account)
+                .ThenInclude(c => c.Transactions)
+                .Where(c => c.CustomerId == custId)
+                .Select(c => new CustomrtInfoViewmodel
+                {
+                    Id = c.CustomerId,
+                    FirstName = c.Givenname,
+                    LastName = c.Surname,
+                    Accounts = c.Dispositions.Select(d => d.Account).ToList(),
+                    Balance = c.Dispositions.Select(d => d.Account.Transactions.Sum(t => t.Amount)).Sum()
+                });
 
+            Customer = quary.First();
         }
     }
 }

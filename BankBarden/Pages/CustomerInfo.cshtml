@@ -2,3 +2,31 @@
 @model BankBarden.Pages.CustomerInfoModel
 @{
 }
+
+
+
+<div class="add-top-padding">
+    <div class="container">
+        <h1>@Model.Customer.FirstName   @Model.Customer.LastName    @Model.Customer.Id</h1>
+        <h2>@Model.Customer.Balance Kr</h2>
+        
+        <h3>Accounts</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var account in Model.Customer.Accounts)
+                {
+                    <tr>
+                        <td>@account.AccountId</td>
+                        <td>@account.Balance Kr</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
