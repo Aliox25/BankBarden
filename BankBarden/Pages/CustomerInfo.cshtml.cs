@@ -1,11 +1,13 @@
 using BankBarden.ViewModels;
 using DataAccessLayer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace BankBarden.Pages
 {
+    [Authorize(Roles = "Employee")]
     public class CustomerInfoModel : PageModel
     {
         private readonly BankAppDataContext _dbContext;

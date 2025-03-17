@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BankBarden.ViewModels;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BankBarden.Pages
 {
+    [Authorize(Roles = "Employee")]
     public class CustomersModel : PageModel
     {
         private readonly BankAppDataContext _dbContext;

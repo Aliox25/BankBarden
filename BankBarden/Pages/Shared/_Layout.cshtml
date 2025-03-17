@@ -18,9 +18,9 @@
 
     @*Fontawesome CDN*@
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body id="page-top">
@@ -38,12 +38,14 @@
 
                 <ul class="navbar-nav text-uppercase py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="/Index#portfolio">Country</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-page="/Customers">Customers</a></li>
-
-                </ul>
-
-                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" asp-area="Identity" asp-page="/Account/Login">login</a></li>
+                    @if (User.IsInRole("Employee"))
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-area="" asp-page="/Customers">Customers</a></li>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-area="" asp-page="/Employees">Employees</a></li>
+                    }
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
