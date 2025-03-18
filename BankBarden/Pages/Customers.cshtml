@@ -5,6 +5,16 @@
 
 <div class="add-top-padding">
     <div class="container">
+
+        @if (Model.Country != null){
+            <h1>All customers from @Model.Country</h1>
+        }
+        else{
+            <h1>All customers</h1>
+        }
+
+        <h3>Page @Model.CurrentPage</h3>
+
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -86,6 +96,41 @@
 
                     </tr>
                 }
+                <tr>
+                    @if (Model.CurrentPage != 1)
+                    {
+                        <td>
+                            <a class="btn btn-secondary"
+                               asp-page="/Customers"
+                               asp-route-coun="@Model.Country"
+                               asp-route-sortColumn="@Model.Column"
+                               asp-route-sortOrder="@Model.Order"
+                               asp-route-pageNumb="@(Model.CurrentPage-1)">
+                                Prev
+                            </a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a class="btn btn-secondary"
+                           asp-page="/Customers"
+                           asp-route-coun="@Model.Country"
+                           asp-route-sortColumn="@Model.Column"
+                           asp-route-sortOrder="@Model.Order"
+                           asp-route-pageNumb="@(Model.CurrentPage+1)">
+                            Next
+                        </a>
+                    </td>
+
+                </tr>
+
+
             </tbody>
         </table>
     </div>
