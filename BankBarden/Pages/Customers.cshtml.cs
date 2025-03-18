@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using BankBarden.ViewModels;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace BankBarden.Pages
 {
@@ -24,6 +25,7 @@ namespace BankBarden.Pages
         public string Order { get; set; }
         public int CurrentPage { get; set; }
         public string Quastion { get; set; }
+        public int MaxPage { get; set; }
         public void OnGet(string country, string sortColumn, string sortOrder, int pageNumb, string quastion)
         {
             Country = country;
@@ -88,10 +90,14 @@ namespace BankBarden.Pages
                 quary = quary.Where(c => c.Name.Contains(quastion) || c.City.Contains(quastion));
             }
 
+            decimal count = (decimal)quary.Count() / 20;
+            MaxPage = (int)Math.Ceiling(count);
 
 
             var amountPerPage = (CurrentPage - 1) * 20;
             quary = quary.Skip(amountPerPage).Take(20);
+
+
 
             Customers = quary.ToList();
         }

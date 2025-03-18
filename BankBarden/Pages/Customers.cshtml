@@ -28,22 +28,22 @@
                     <th scope="col">
                         Id
                         <a asp-page="/Customers"
-                           asp-route-country="@Model.Country"
-                           asp-route-quastion="@Model.Quastion"
-                           asp-route-pageNumb="@Model.CurrentPage"
-                           asp-route-sortColumn="Id"
-                           asp-route-sortOrder="asc"
-                           style="text-decoration:none">
+                        asp-route-country="@Model.Country"
+                        asp-route-quastion="@Model.Quastion"
+                        asp-route-pageNumb="@Model.CurrentPage"
+                        asp-route-sortColumn="Id"
+                        asp-route-sortOrder="asc"
+                        style="text-decoration:none">
                             <i class="fa-solid fa-angle-up"></i>
 
                         </a>
                         <a asp-page="/Customers"
-                           asp-route-country="@Model.Country"
-                           asp-route-quastion="@Model.Quastion"
-                           asp-route-pageNumb="@Model.CurrentPage"
-                           asp-route-sortColumn="Id"
-                           asp-route-sortOrder="desc"
-                           style="text-decoration:none">
+                        asp-route-country="@Model.Country"
+                        asp-route-quastion="@Model.Quastion"
+                        asp-route-pageNumb="@Model.CurrentPage"
+                        asp-route-sortColumn="Id"
+                        asp-route-sortOrder="desc"
+                        style="text-decoration:none">
                             <i class="fa-solid fa-angle-down"></i>
                         </a>
                     </th>
@@ -51,22 +51,22 @@
                     <th scope="col">
                         Name
                         <a asp-page="/Customers"
-                           asp-route-country="@Model.Country"
-                           asp-route-quastion="@Model.Quastion"
-                           asp-route-pageNumb="@Model.CurrentPage"
-                           asp-route-sortColumn="Name"
-                           asp-route-sortOrder="asc"
-                           style="text-decoration:none">
+                        asp-route-country="@Model.Country"
+                        asp-route-quastion="@Model.Quastion"
+                        asp-route-pageNumb="@Model.CurrentPage"
+                        asp-route-sortColumn="Name"
+                        asp-route-sortOrder="asc"
+                        style="text-decoration:none">
                             <i class="fa-solid fa-angle-up"></i>
 
                         </a>
                         <a asp-page="/Customers"
-                           asp-route-country="@Model.Country"
-                           asp-route-quastion="@Model.Quastion"
-                           asp-route-pageNumb="@Model.CurrentPage"
-                           asp-route-sortColumn="Name"
-                           asp-route-sortOrder="desc"
-                           style="text-decoration:none">
+                        asp-route-country="@Model.Country"
+                        asp-route-quastion="@Model.Quastion"
+                        asp-route-pageNumb="@Model.CurrentPage"
+                        asp-route-sortColumn="Name"
+                        asp-route-sortOrder="desc"
+                        style="text-decoration:none">
                             <i class="fa-solid fa-angle-down"></i>
                         </a>
                     </th>
@@ -74,22 +74,22 @@
                     <th scope="col">
                         City
                         <a asp-page="/Customers"
-                           asp-route-country="@Model.Country"
-                           asp-route-quastion="@Model.Quastion"
-                           asp-route-pageNumb="@Model.CurrentPage"
-                           asp-route-sortColumn="City"
-                           asp-route-sortOrder="asc"
-                           style="text-decoration:none">
+                        asp-route-country="@Model.Country"
+                        asp-route-quastion="@Model.Quastion"
+                        asp-route-pageNumb="@Model.CurrentPage"
+                        asp-route-sortColumn="City"
+                        asp-route-sortOrder="asc"
+                        style="text-decoration:none">
                             <i class="fa-solid fa-angle-up"></i>
 
                         </a>
                         <a asp-page="/Customers"
-                           asp-route-country="@Model.Country"
-                           asp-route-quastion="@Model.Quastion"
-                           asp-route-pageNumb="@Model.CurrentPage"
-                           asp-route-sortColumn="City"
-                           asp-route-sortOrder="desc"
-                           style="text-decoration:none">
+                        asp-route-country="@Model.Country"
+                        asp-route-quastion="@Model.Quastion"
+                        asp-route-pageNumb="@Model.CurrentPage"
+                        asp-route-sortColumn="City"
+                        asp-route-sortOrder="desc"
+                        style="text-decoration:none">
                             <i class="fa-solid fa-angle-down"></i>
                         </a>
                     </th>
@@ -107,8 +107,8 @@
                         <td>@cust.Country</td>
                         <td>
                             <a asp-area="" asp-page="/CustomerInfo"
-                               asp-route-custId="@cust.Id"
-                               class="btn btn-primary">
+                            asp-route-custId="@cust.Id"
+                            class="btn btn-primary">
                                 See info
                             </a>
                         </td>
@@ -120,12 +120,12 @@
                     {
                         <td>
                             <a class="btn btn-secondary"
-                               asp-page="/Customers"
-                               asp-route-country="@Model.Country"
-                               asp-route-quastion="@Model.Quastion"
-                               asp-route-sortColumn="@Model.Column"
-                               asp-route-sortOrder="@Model.Order"
-                               asp-route-pageNumb="@(Model.CurrentPage-1)">
+                            asp-page="/Customers"
+                            asp-route-country="@Model.Country"
+                            asp-route-quastion="@Model.Quastion"
+                            asp-route-sortColumn="@Model.Column"
+                            asp-route-sortOrder="@Model.Order"
+                            asp-route-pageNumb="@(Model.CurrentPage-1)">
                                 Prev
                             </a>
                         </td>
@@ -137,18 +137,24 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>
-                        <a class="btn btn-secondary"
-                           asp-page="/Customers"
-                           asp-route-country="@Model.Country"
-                           asp-route-quastion="@Model.Quastion"
-                           asp-route-sortColumn="@Model.Column"
-                           asp-route-sortOrder="@Model.Order"
-                           asp-route-pageNumb="@(Model.CurrentPage+1)">
-                            Next
-                        </a>
-                    </td>
-
+                    @if (Model.CurrentPage != Model.MaxPage)
+                    {
+                        <td>
+                            <a class="btn btn-secondary"
+                            asp-page="/Customers"
+                            asp-route-country="@Model.Country"
+                            asp-route-quastion="@Model.Quastion"
+                            asp-route-sortColumn="@Model.Column"
+                            asp-route-sortOrder="@Model.Order"
+                            asp-route-pageNumb="@(Model.CurrentPage+1)">
+                                Next
+                            </a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
                 </tr>
 
 
