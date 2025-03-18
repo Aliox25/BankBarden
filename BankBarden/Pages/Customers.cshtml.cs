@@ -81,6 +81,9 @@ namespace BankBarden.Pages
                 else if (sortOrder == "desc")
                     quary = quary.OrderByDescending(s => s.City);
             
+            var amountPerPage = (CurrentPage - 1) * 20;
+            quary = quary.Skip(amountPerPage).Take(20);
+
             Customers = quary.ToList();
         }
     }
