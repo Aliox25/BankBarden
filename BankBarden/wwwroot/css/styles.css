@@ -112,9 +112,6 @@ hr {
   opacity: 0.25;
 }
 
-.add-top-padding {
-    padding-top: 10rem;
-}
 
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
     margin-top: 0;
@@ -11315,4 +11312,12 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .logouttext {
     height: 38.8px;
+}
+
+.add-top-padding {
+    padding-top: 10rem;
+}
+
+.add-bot-padding {
+    padding-bottom: 5rem;
 }
