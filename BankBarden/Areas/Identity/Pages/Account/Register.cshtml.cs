@@ -132,7 +132,7 @@ namespace BankBarden.Areas.Identity.Pages.Account
                     if (Input.UserRole == null)
                     {
                         await _userManager.AddToRoleAsync(
-                            user, "Customer");
+                            user, "Cashier");
                     }
                     else
                     {

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BankBarden.Pages
 {
-    [Authorize(Roles = "Employee")]
+    [Authorize(Roles = "Cashier")]
     public class CustomerInfoModel : PageModel
     {
         private readonly BankAppDataContext _dbContext;

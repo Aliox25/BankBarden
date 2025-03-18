@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BankBarden.Pages
 {
-    [Authorize(Roles = "Employee")]
+    [Authorize(Roles = "Cashier")]
     public class CustomersModel : PageModel
     {
         private readonly BankAppDataContext _dbContext;
