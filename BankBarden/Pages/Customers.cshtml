@@ -15,13 +15,21 @@
 
         <h3>Page @Model.CurrentPage</h3>
 
+        <form method="get">
+            <input asp-for="@Model.Quastion"/>
+            <input type="hidden" asp-for="@Model.Country"/>
+            <input type="submit" value="Search"/>
+        </form>
+
+
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">
                         Id
                         <a asp-page="/Customers"
-                           asp-route-coun="@Model.Country"
+                           asp-route-country="@Model.Country"
+                           asp-route-quastion="@Model.Quastion"
                            asp-route-pageNumb="@Model.CurrentPage"
                            asp-route-sortColumn="Id"
                            asp-route-sortOrder="asc"
@@ -30,7 +38,8 @@
 
                         </a>
                         <a asp-page="/Customers"
-                           asp-route-coun="@Model.Country"
+                           asp-route-country="@Model.Country"
+                           asp-route-quastion="@Model.Quastion"
                            asp-route-pageNumb="@Model.CurrentPage"
                            asp-route-sortColumn="Id"
                            asp-route-sortOrder="desc"
@@ -42,7 +51,8 @@
                     <th scope="col">
                         Name
                         <a asp-page="/Customers"
-                           asp-route-coun="@Model.Country"
+                           asp-route-country="@Model.Country"
+                           asp-route-quastion="@Model.Quastion"
                            asp-route-pageNumb="@Model.CurrentPage"
                            asp-route-sortColumn="Name"
                            asp-route-sortOrder="asc"
@@ -51,7 +61,8 @@
 
                         </a>
                         <a asp-page="/Customers"
-                           asp-route-coun="@Model.Country"
+                           asp-route-country="@Model.Country"
+                           asp-route-quastion="@Model.Quastion"
                            asp-route-pageNumb="@Model.CurrentPage"
                            asp-route-sortColumn="Name"
                            asp-route-sortOrder="desc"
@@ -63,7 +74,8 @@
                     <th scope="col">
                         City
                         <a asp-page="/Customers"
-                           asp-route-coun="@Model.Country"
+                           asp-route-country="@Model.Country"
+                           asp-route-quastion="@Model.Quastion"
                            asp-route-pageNumb="@Model.CurrentPage"
                            asp-route-sortColumn="City"
                            asp-route-sortOrder="asc"
@@ -72,7 +84,8 @@
 
                         </a>
                         <a asp-page="/Customers"
-                           asp-route-coun="@Model.Country"
+                           asp-route-country="@Model.Country"
+                           asp-route-quastion="@Model.Quastion"
                            asp-route-pageNumb="@Model.CurrentPage"
                            asp-route-sortColumn="City"
                            asp-route-sortOrder="desc"
@@ -108,7 +121,8 @@
                         <td>
                             <a class="btn btn-secondary"
                                asp-page="/Customers"
-                               asp-route-coun="@Model.Country"
+                               asp-route-country="@Model.Country"
+                               asp-route-quastion="@Model.Quastion"
                                asp-route-sortColumn="@Model.Column"
                                asp-route-sortOrder="@Model.Order"
                                asp-route-pageNumb="@(Model.CurrentPage-1)">
@@ -126,7 +140,8 @@
                     <td>
                         <a class="btn btn-secondary"
                            asp-page="/Customers"
-                           asp-route-coun="@Model.Country"
+                           asp-route-country="@Model.Country"
+                           asp-route-quastion="@Model.Quastion"
                            asp-route-sortColumn="@Model.Column"
                            asp-route-sortOrder="@Model.Order"
                            asp-route-pageNumb="@(Model.CurrentPage+1)">

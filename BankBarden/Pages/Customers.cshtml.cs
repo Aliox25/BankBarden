@@ -23,9 +23,11 @@ namespace BankBarden.Pages
         public string Column { get; set; }
         public string Order { get; set; }
         public int CurrentPage { get; set; }
-        public void OnGet(string coun, string sortColumn, string sortOrder, int pageNumb)
+        public string Quastion { get; set; }
+        public void OnGet(string country, string sortColumn, string sortOrder, int pageNumb, string quastion)
         {
-            Country = coun;
+            Country = country;
+            Quastion = quastion;
 
             if (sortColumn == null)
                 sortColumn = "Id";
@@ -80,7 +82,14 @@ namespace BankBarden.Pages
                     quary = quary.OrderBy(s => s.City);
                 else if (sortOrder == "desc")
                     quary = quary.OrderByDescending(s => s.City);
-            
+
+            if (!string.IsNullOrEmpty(quastion))
+            {
+                quary = quary.Where(c => c.Name.Contains(quastion) || c.City.Contains(quastion));
+            }
+
+
+
             var amountPerPage = (CurrentPage - 1) * 20;
             quary = quary.Skip(amountPerPage).Take(20);
 
