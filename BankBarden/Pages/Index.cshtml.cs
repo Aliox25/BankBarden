@@ -3,34 +3,30 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BankBarden.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Service.CountryService;
 
 namespace BankBarden.Pages;
 
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
-    private readonly BankAppDataContext _dbContext;
+    private readonly ICountryS _countryS;
 
 
-    public IndexModel(ILogger<IndexModel> logger, BankAppDataContext dbContext)
+    public IndexModel(ILogger<IndexModel> logger, ICountryS countryS)
     {
         _logger = logger;
-        _dbContext = dbContext;
+        _countryS = countryS;
     }
 
     public List<CountryViewModel> Countries { get; set; }
     public void OnGet()
     {
-        Countries = _dbContext.Customers
-            .Include(d => d.Dispositions)
-            .ThenInclude(a => a.Account)
-            .GroupBy(c => c.Country)
-            .Select(c => new CountryViewModel
-            {
-                Country = c.Key,
-                UserCount = c.Count(),
-                CountryTotalMoney = c.Sum(c => c.Dispositions.Sum(d => d.Account.Balance))
-            })
-            .ToList();
+        Countries = _countryS.GetCountrys().Select(c => new CountryViewModel
+        {
+            Country = c.Country,
+            UserCount = c.UserCount,
+            CountryTotalMoney = c.CountryTotalMoney
+        }).ToList();
     }
 }

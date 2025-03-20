@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using DataAccessLayer.Models;
+using Service.CountryService;
 
 namespace BankBarden;
 
@@ -22,6 +23,10 @@ public class Program
         builder.Services.AddRazorPages();
 
         builder.Services.AddTransient<DataInitializer>();
+
+        builder.Services.AddTransient<ICountryS, CountryS>();
+
+
         var app = builder.Build();
 
         using (var scope = app.Services.CreateScope())
