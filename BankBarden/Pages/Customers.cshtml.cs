@@ -5,23 +5,24 @@ using BankBarden.ViewModels;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Service.CustomerService;
 
 namespace BankBarden.Pages
 {
     [Authorize(Roles = "Cashier")]
     public class CustomersModel : PageModel
     {
-        private readonly BankAppDataContext _dbContext;
+        private readonly IAllCustomerS _allCustS;
 
 
-        public CustomersModel(BankAppDataContext dbContext)
+        public CustomersModel(IAllCustomerS allCustS)
         {
-            _dbContext = dbContext;
+            _allCustS = allCustS;
         }
 
         public List<AllCustomersViewModel> Customers { get; set; }
         public string Country { get; set; }
-        public string Column { get; set; }
+        public string Culom { get; set; }
         public string Order { get; set; }
         public int CurrentPage { get; set; }
         public string Quastion { get; set; }
@@ -30,76 +31,18 @@ namespace BankBarden.Pages
         {
             Country = country;
             Quastion = quastion;
+            Culom = _allCustS.GetColumOrder(sortColumn);
+            Order = _allCustS.GetSortOrder(sortOrder);
+            CurrentPage = _allCustS.GetPageNumber(pageNumb);
+            MaxPage = _allCustS.GetMaxPage(Country, Quastion);
 
-            if (sortColumn == null)
-                sortColumn = "Id";
-            Column = sortColumn;
-
-            if (sortOrder == null)
-                sortOrder = "asc";
-            Order = sortOrder;
-
-            if (pageNumb == 0)
-                pageNumb = 1;
-            CurrentPage = pageNumb;
-
-            
-            var quary = _dbContext.Customers
-            .Select(c => new AllCustomersViewModel
+            Customers = _allCustS.GetCustomers(Country, Culom, Order, CurrentPage, Quastion).Select(c => new AllCustomersViewModel
             {
-                Id = c.CustomerId,
-                Name = c.Givenname,
+                Id = c.Id,
+                Name = c.Name,
                 City = c.City,
                 Country = c.Country
-            });
-
-            if (Country != null)
-            {
-                quary = _dbContext.Customers
-                .Where(c => c.Country == Country)
-                .Select(c => new AllCustomersViewModel
-                {
-                    Id = c.CustomerId,
-                    Name = c.Givenname,
-                    City = c.City,
-                    Country = c.Country
-                });
-
-            }
-
-            if (sortColumn == "Id")
-                if (sortOrder == "asc")
-                    quary = quary.OrderBy(c => c.Id);
-                else if (sortOrder == "desc")
-                    quary = quary.OrderByDescending(c => c.Id);
-
-            if (sortColumn == "Name")
-                if (sortOrder == "asc")
-                    quary = quary.OrderBy(c => c.Name);
-                else if (sortOrder == "desc")
-                    quary = quary.OrderByDescending(c => c.Name);
-
-            if (sortColumn == "City")
-                if (sortOrder == "asc")
-                    quary = quary.OrderBy(s => s.City);
-                else if (sortOrder == "desc")
-                    quary = quary.OrderByDescending(s => s.City);
-
-            if (!string.IsNullOrEmpty(quastion))
-            {
-                quary = quary.Where(c => c.Name.Contains(quastion) || c.City.Contains(quastion));
-            }
-
-            decimal count = (decimal)quary.Count() / 20;
-            MaxPage = (int)Math.Ceiling(count);
-
-
-            var amountPerPage = (CurrentPage - 1) * 20;
-            quary = quary.Skip(amountPerPage).Take(20);
-
-
-
-            Customers = quary.ToList();
+            }).ToList();
         }
     }
 }

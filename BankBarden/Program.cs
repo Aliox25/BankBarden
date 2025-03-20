@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using DataAccessLayer.Models;
 using Service.CountryService;
+using Service.CustomerService;
 
 namespace BankBarden;
 
@@ -25,6 +26,7 @@ public class Program
         builder.Services.AddTransient<DataInitializer>();
 
         builder.Services.AddTransient<ICountryS, CountryS>();
+        builder.Services.AddTransient<IAllCustomerS, AllCustomerS>();
 
 
         var app = builder.Build();
