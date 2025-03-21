@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using DataAccessLayer.Models;
 using Service.CountryService;
 using Service.CustomerService;
+using Service.TransactionsService;
 
 namespace BankBarden;
 
@@ -27,6 +28,8 @@ public class Program
 
         builder.Services.AddTransient<ICountryS, CountryS>();
         builder.Services.AddTransient<IAllCustomerS, AllCustomerS>();
+        builder.Services.AddTransient<IDepositS, DepositS>();
+        builder.Services.AddTransient<IWithdrawalS, WithdrawalS>();
 
 
         var app = builder.Build();
