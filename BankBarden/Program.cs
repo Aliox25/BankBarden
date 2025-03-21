@@ -4,6 +4,7 @@ using DataAccessLayer.Models;
 using Service.CountryService;
 using Service.CustomerService;
 using Service.TransactionsService;
+using Service.AccountService;
 
 namespace BankBarden;
 
@@ -30,6 +31,8 @@ public class Program
         builder.Services.AddTransient<IAllCustomerS, AllCustomerS>();
         builder.Services.AddTransient<IDepositS, DepositS>();
         builder.Services.AddTransient<IWithdrawalS, WithdrawalS>();
+        builder.Services.AddTransient<IAccountS, AccountS>();
+        builder.Services.AddTransient<ISingelCustomerS, SingelCustomerS>();
 
 
         var app = builder.Build();

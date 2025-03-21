@@ -19,10 +19,10 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var account in Model.Customer.Accounts)
+                @foreach (var account in Model.Accounts)
                 {
                     <tr>
-                        <td>@account.AccountId</td>
+                        <td>@account.Id</td>
                         <td>@account.Balance Kr</td>
                     </tr>
                 }

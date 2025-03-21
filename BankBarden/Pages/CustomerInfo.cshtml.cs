@@ -4,36 +4,40 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Service.AccountService;
+using Service.CustomerService;
 
 namespace BankBarden.Pages
 {
     [Authorize(Roles = "Cashier")]
     public class CustomerInfoModel : PageModel
     {
-        private readonly BankAppDataContext _dbContext;
+        private readonly IAccountS _accountS;
+        private readonly ISingelCustomerS _singelCustomer;
 
-        public CustomerInfoModel(BankAppDataContext dbContext)
+        public CustomerInfoModel(IAccountS accountS, ISingelCustomerS singelCustomer)
         {
-            _dbContext = dbContext;
+            _accountS = accountS;
+            _singelCustomer = singelCustomer;
         }
         public CustomrtInfoViewmodel Customer {  get; set; }
+        public List<AcountViewModel> Accounts { get; set; }
         public void OnGet(int custId)
         {
-            var quary = _dbContext.Customers
-                .Include(c => c.Dispositions)
-                .ThenInclude(c => c.Account)
-                .ThenInclude(c => c.Transactions)
-                .Where(c => c.CustomerId == custId)
-                .Select(c => new CustomrtInfoViewmodel
-                {
-                    Id = c.CustomerId,
-                    FirstName = c.Givenname,
-                    LastName = c.Surname,
-                    Accounts = c.Dispositions.Select(d => d.Account).ToList(),
-                    Balance = c.Dispositions.Select(d => d.Account.Transactions.Sum(t => t.Amount)).Sum()
-                });
+            var quary = _singelCustomer.GetCustomer(custId);
 
-            Customer = quary.First();
+            Customer = new CustomrtInfoViewmodel
+            {
+                Id = quary.Id,
+                FirstName = quary.FirstName,
+                LastName = quary.LastName,
+                Balance = quary.Balance,
+            };
+            Accounts = _accountS.GetAccounts(custId).Select(a => new AcountViewModel
+            {
+                Id = a.AccountId,
+                Balance = a.Balance
+            }).ToList();
         }
     }
 }

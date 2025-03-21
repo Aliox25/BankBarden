@@ -1,8 +1,13 @@
 ﻿using DataAccessLayer.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace BankBarden.ViewModels
+namespace DataAccessLayer.DTOs
 {
-    public class CustomrtInfoViewmodel
+    public class SingelCustomerDTO
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
