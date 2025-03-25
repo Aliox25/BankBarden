@@ -44,13 +44,15 @@ namespace BankBarden.Pages.Transactions
         }
 
         public IActionResult OnPost(int accountId, int customerId)
-        {
+        { 
+
             if (ModelState.IsValid)
             {
                 _depositS.MakeADeposit(accountId, Amount, Comment);
                 _accountS.Update();
                 return RedirectToPage("/CustomerInfo", new { custId = customerId });
             }
+            Balance = _accountS.GetSingelAccount(accountId).Balance;
             return Page();
 
 

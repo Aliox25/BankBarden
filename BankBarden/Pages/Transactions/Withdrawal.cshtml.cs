@@ -49,6 +49,7 @@ namespace BankBarden.Pages.Transactions
                 _accountS.Update();
                 return RedirectToPage("/CustomerInfo", new { custId = customerId });
             }
+            Balance = _accountS.GetSingelAccount(accountId).Balance;
             return Page();
 
 
