@@ -8,5 +8,7 @@ namespace Service.TransactionsService
 {
     public interface IWithdrawalS
     {
+        void MakeAWithdral(int accountId, decimal amount, string comment);
+        bool CheckIfWithdrawalIsPossible(int accountId, decimal amount);
     }
 }
