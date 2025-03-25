@@ -23,15 +23,19 @@ namespace Service.CustomerService
             var quary = _dbContext.Customers
                 .Include(c => c.Dispositions)
                 .ThenInclude(c => c.Account)
-                .ThenInclude(c => c.Transactions)
                 .FirstOrDefault(c => c.CustomerId == customerId);
+
+            var totalBalance = _dbContext.Dispositions
+                .Where(d => d.CustomerId == customerId)
+                .Select(d => d.Account).Sum(a => a.Balance);
+
 
             return new SingelCustomerDTO
             {
                 Id = quary.CustomerId,
                 FirstName = quary.Givenname,
                 LastName = quary.Surname,
-                Balance = quary.Dispositions.Select(d => d.Account.Transactions.Sum(t => t.Amount)).Sum()
+                Balance = totalBalance
             };
 
         }

@@ -16,6 +16,8 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Balance</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +26,12 @@
                     <tr>
                         <td>@account.Id</td>
                         <td>@account.Balance Kr</td>
+                        <td>
+                            <a asp-page="/Transactions/Deposit" asp-route-accountId="@account.Id" asp-route-customerId="@Model.Customer.Id"><i class="fa-solid fa-angle-up"></i></a>
+                        </td>
+                        <td>
+                            <a asp-page="/Transactions/Withdrawal" asp-route-accountId="@account.Id" asp-route-customerId="@Model.Customer.Id"><i class="fa-solid fa-angle-down"></i></a>
+                        </td>
                     </tr>
                 }
             </tbody>

@@ -8,5 +8,6 @@ namespace Service.TransactionsService
 {
     public interface IDepositS
     {
+        void MakeADeposit(int accountId, decimal amount, string comment);
     }
 }

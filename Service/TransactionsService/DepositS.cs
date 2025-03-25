@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,18 @@ namespace Service.TransactionsService
 {
     public class DepositS : IDepositS
     {
+        private readonly BankAppDataContext _dbContext;
+
+        public DepositS(BankAppDataContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+
+        public void MakeADeposit(int accountId, decimal amount, string comment)
+        {
+            var dbAccount = _dbContext.Accounts.FirstOrDefault(a => a.AccountId == accountId);
+            dbAccount.Balance += amount;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Models;
+﻿using DataAccessLayer.DTOs;
+using DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,17 +17,33 @@ namespace Service.AccountService
         {
             _dbContext = dbContext;
         }
-        public List<Account> GetAccounts(int custId)
+        public List<AccountDTO> GetAccounts(int custId)
         {
-            return _dbContext.Accounts.Include(a => a.Dispositions).Where(a => a.Dispositions.Any(d => d.CustomerId == custId)).ToList();
+            var quarry = _dbContext
+                .Dispositions
+                .Include(a => a.Account)
+                .Where(c => c.CustomerId == custId)
+                .Select(a => new AccountDTO
+                {
+                    Id = a.AccountId,
+                    Balance = a.Account.Balance
+                });
+
+            return quarry.ToList();
         }
 
-        public Account GetAccount(int accountId)
+        public AccountDTO GetSingelAccount(int accountId)
         {
-            return _dbContext.Accounts.First(a => a.AccountId == accountId);
+            var quarry = _dbContext.Accounts.First(a => a.AccountId == accountId);
+
+            return new AccountDTO
+            {
+                Id = quarry.AccountId,
+                Balance = quarry.Balance
+            };
         }
 
-        public void Update(Account account)
+        public void Update()
         {
             _dbContext.SaveChanges();
         }

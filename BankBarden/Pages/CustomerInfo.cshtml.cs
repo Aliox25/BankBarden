@@ -33,9 +33,10 @@ namespace BankBarden.Pages
                 LastName = quary.LastName,
                 Balance = quary.Balance,
             };
+
             Accounts = _accountS.GetAccounts(custId).Select(a => new AcountViewModel
             {
-                Id = a.AccountId,
+                Id = a.Id,
                 Balance = a.Balance
             }).ToList();
         }
