@@ -26,14 +26,14 @@ namespace BankBarden.Pages.Transactions
         [Range(1, 5000, ErrorMessage = "Amount can only be between 1 and 5000!")]
         
         public decimal Amount { get; set; }
-        public DateTime DepositDate { get; set; }
+        public DateTime WithdralDate { get; set; }
 
         [MaxLength(100, ErrorMessage = "Comment is to long!")]
         public string? Comment { get; set; }
 
         public void OnGet(int accountId, int customerId)
         {
-            DepositDate = DateTime.Now.AddHours(1);
+            WithdralDate = DateTime.Now.AddHours(1);
             AccountId = accountId;
             CustomerId = customerId;
             Balance = _accountS.GetSingelAccount(accountId).Balance;
@@ -42,8 +42,12 @@ namespace BankBarden.Pages.Transactions
 
         public IActionResult OnPost(int accountId, int customerId)
         {
-            var check = _withdrS.CheckIfWithdrawalIsPossible(accountId, Amount);
-            if (ModelState.IsValid && check == true)
+            if (_accountS.GetSingelAccount(accountId).Balance < Amount)
+            {
+                ModelState.AddModelError("Amount", "You don't have that much money!");
+            }
+
+            if (ModelState.IsValid)
             {
                 _withdrS.MakeAWithdral(accountId, Amount, Comment);
                 _accountS.Update();

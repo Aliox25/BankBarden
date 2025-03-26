@@ -8,8 +8,8 @@
 <header class="masthead">
     <div class="add-top-padding add-bot-padding">
         <div class="container">
-            <div class="masthead-subheading">Welcome To BankBarden</div>
-            <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+            <div class="masthead-heading">Welcome To BankBarden</div>
+            <div class="masthead-subheading text-uppercase">We hope you have a wonderful day</div>
         </div>
     </div>
 </header>
@@ -19,7 +19,7 @@
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Country</h2>
-            <h3 class="section-subheading text-muted">Hear are difrent countrys that BankBarden have coustomers from.</h3>
+            <h3 class="section-subheading text-muted">Here are different countries that BankBarden have customers from.</h3>
         </div>
         <div class="row">
             @foreach (var country in Model.Countries)
@@ -31,7 +31,11 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
+
+                            <!--TODO Flags-->
                             <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
+
+
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">@country.Country</div>

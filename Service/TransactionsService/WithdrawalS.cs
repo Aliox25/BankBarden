@@ -24,14 +24,5 @@ namespace Service.TransactionsService
             dbAccount.Balance -= amount;
         }
 
-        public bool CheckIfWithdrawalIsPossible(int accountId, decimal amount)
-        {
-            var dbAccount = _dbContext.Accounts.FirstOrDefault(a => a.AccountId == accountId);
-            if (dbAccount.Balance >= amount)
-            {
-                return true;
-            }
-            return false;
-        }
     }
 }
