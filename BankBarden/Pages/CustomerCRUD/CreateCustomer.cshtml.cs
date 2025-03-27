@@ -35,8 +35,9 @@ namespace BankBarden.Pages.CustomerCRUD
 
         [RegularExpression(@"^\d{5}$", ErrorMessage = "Please enter a valid postcode!")]
         public string Postcode { get; set; }
-        public string Country { get; set; }
-        
+        public int CountryId { get; set; }
+        public List<SelectListItem> Countries { get; set; }
+
         public void OnGet()
         {
             Genders = _customerS.Fillgenderlist();

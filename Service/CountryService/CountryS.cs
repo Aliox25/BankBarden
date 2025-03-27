@@ -26,7 +26,7 @@ namespace Service.CountryService
             .GroupBy(c => c.Country)
             .Select(c => new CountryDTO
             {
-                Country = c.Key,
+                CountryName = c.Key,
                 UserCount = c.Count(),
                 CountryTotalMoney = c.Sum(c => c.Dispositions.Sum(d => d.Account.Balance))
             })

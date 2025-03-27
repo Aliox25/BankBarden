@@ -46,7 +46,7 @@ namespace Service.CustomerService
                 Id = c.CustomerId,
                 Name = c.Givenname,
                 City = c.City,
-                Country = c.Country
+                CountryName = c.Country
             });
 
             if (country != null)
@@ -58,7 +58,7 @@ namespace Service.CustomerService
                     Id = c.CustomerId,
                     Name = c.Givenname,
                     City = c.City,
-                    Country = c.Country
+                    CountryName = c.Country
                 });
             }
 
@@ -85,7 +85,7 @@ namespace Service.CustomerService
                     Id = c.CustomerId,
                     Name = c.Givenname,
                     City = c.City,
-                    Country = c.Country
+                    CountryName = c.Country
                 });
 
             if (country != null)
@@ -97,7 +97,7 @@ namespace Service.CustomerService
                     Id = c.CustomerId,
                     Name = c.Givenname,
                     City = c.City,
-                    Country = c.Country
+                    CountryName = c.Country
                 });
             }
 

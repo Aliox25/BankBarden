@@ -52,5 +52,18 @@ namespace Service.CustomerService
 
         }
 
+        public IEnumerable<CountryDTO> GetCountries()
+        {
+            return _dbContext.Countries
+                .Include(c => c.Customers)
+                .Select(c => new CountryDTO
+                {
+                    CountryName = c.Name,
+                    UserCount = c.Customers.Count(),
+                    CountryTotalMoney = c.Customers.Sum(c => c.Dispositions.Sum(d => d.Account.Balance))
+                })
+                .ToList();
+        }
+
     }
 }

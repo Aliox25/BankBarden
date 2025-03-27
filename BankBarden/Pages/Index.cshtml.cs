@@ -24,7 +24,7 @@ public class IndexModel : PageModel
     {
         Countries = _countryS.GetCountrys().Select(c => new CountryViewModel
         {
-            Country = c.Country,
+            Country = c.CountryName,
             UserCount = c.UserCount,
             CountryTotalMoney = c.CountryTotalMoney
         }).ToList();

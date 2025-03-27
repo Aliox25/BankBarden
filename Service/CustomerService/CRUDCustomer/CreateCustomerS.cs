@@ -19,7 +19,7 @@ namespace Service.CustomerService.CRUDCustomer
             _dbContext = dbContext;
         }
 
-        public void CreateCustoms(string FN, string LN, GenderE GE, string SA, string C, string CT, string PC)
+        public void CreateCustoms(string FN, string LN, GenderE GE, string SA, string C, Country CT, string PC)
         {
             var customerDTO = new Customer
             {
@@ -28,18 +28,14 @@ namespace Service.CustomerService.CRUDCustomer
                 Gender = GE,
                 Streetaddress = SA,
                 City = C,
-                Country = CT,
+                Country = CT.Name,
                 Zipcode = PC,
-                CountryCode = GetCountryCode(CT)
+                CountryCode = CT.Code
             };
 
             _dbContext.Customers.Add(customerDTO);
             _dbContext.SaveChanges();
         }
 
-        public string GetCountryCode(string country)
-        {
-            return country?.Substring(0, 2).ToUpper() ?? "";
-        }
     }
 }

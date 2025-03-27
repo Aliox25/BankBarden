@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,8 @@ namespace DataAccessLayer.DTOs
 {
     public class CountryDTO
     {
-        public string Country { get; set; }
+        public string CountryName { get; set; }
+        public string CountryCode { get; set; }
         public int UserCount { get; set; }
         public decimal CountryTotalMoney { get; set; }
     }

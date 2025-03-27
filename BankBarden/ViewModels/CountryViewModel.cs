@@ -1,4 +1,6 @@
-﻿namespace BankBarden.ViewModels
+﻿using DataAccessLayer.DTOs;
+
+namespace BankBarden.ViewModels
 {
     public class CountryViewModel
     {

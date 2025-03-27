@@ -41,7 +41,7 @@ namespace BankBarden.Pages
                 Id = c.Id,
                 Name = c.Name,
                 City = c.City,
-                Country = c.Country
+                Country = c.CountryName
             }).ToList();
         }
     }

@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.DTOs
+namespace DataAccessLayer.Models
 {
-    public class AllCustomerDTO
+    public class Country
     {
         public int Id { get; set; }
+
+        [MaxLength(25)]
         public string Name { get; set; }
-        public string City { get; set; }
-        public string CountryName { get; set; }
+
+        [MaxLength(2)]
+        public string Code { get; set; }
+
     }
 }
