@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.DTOs;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace Service.CustomerService
         int GetPageNumber(int page);
         int GetMaxPage(string country, string quastion);
         List<AllCustomerDTO> GetCustomers(string country, string colum, string order, int page, string quastion);
+        
     }
 }

@@ -1,5 +1,7 @@
 ﻿using DataAccessLayer.DTOs;
 using DataAccessLayer.Models;
+using DataAccessLayer.Models.ENUM;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -66,7 +68,12 @@ namespace Service.CustomerService
             }
 
             decimal count = (decimal)quary.Count() / 20;
-            var MaxPage = (int)Math.Ceiling(count);
+            var MaxPage = 1;
+            if (count > 0)
+            {
+                MaxPage = (int)Math.Ceiling(count);
+            }
+
             return MaxPage;
 
         }
@@ -123,7 +130,6 @@ namespace Service.CustomerService
             return quary.ToList();
 
         }
-
 
 
     }

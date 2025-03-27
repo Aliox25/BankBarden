@@ -5,6 +5,7 @@ using Service.CountryService;
 using Service.CustomerService;
 using Service.TransactionsService;
 using Service.AccountService;
+using Service.CustomerService.CRUDCustomer;
 
 namespace BankBarden;
 
@@ -33,6 +34,7 @@ public class Program
         builder.Services.AddTransient<IWithdrawalS, WithdrawalS>();
         builder.Services.AddTransient<IAccountS, AccountS>();
         builder.Services.AddTransient<ISingelCustomerS, SingelCustomerS>();
+        builder.Services.AddTransient<ICreateCustomerS , CreateCustomerS>();
 
 
         var app = builder.Build();

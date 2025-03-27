@@ -15,11 +15,15 @@
 
         <h3>Page @Model.CurrentPage</h3>
 
+        <a class="nav-link" asp-area="" asp-page="/CustomerCRUD/CreateCustomer">Creat new Customer</a>
+
         <form method="get">
             <input asp-for="@Model.Quastion"/>
             <input type="hidden" asp-for="@Model.Country"/>
             <input type="submit" value="Search"/>
         </form>
+
+
 
 
         <table class="table table-striped">

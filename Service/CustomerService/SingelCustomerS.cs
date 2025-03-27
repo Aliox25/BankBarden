@@ -1,5 +1,7 @@
 ﻿using DataAccessLayer.DTOs;
 using DataAccessLayer.Models;
+using DataAccessLayer.Models.ENUM;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -37,6 +39,16 @@ namespace Service.CustomerService
                 LastName = quary.Surname,
                 Balance = totalBalance
             };
+
+        }
+
+        public List<SelectListItem> Fillgenderlist()
+        {
+            return Enum.GetValues<GenderE>().Select(e => new SelectListItem
+            {
+                Value = e.ToString(),
+                Text = e.ToString()
+            }).ToList();
 
         }
 
