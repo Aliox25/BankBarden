@@ -6,6 +6,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Service.CustomerService;
+using DataAccessLayer.Models.ENUM;
 
 namespace BankBarden.Pages
 {
@@ -21,13 +22,13 @@ namespace BankBarden.Pages
         }
 
         public List<AllCustomersViewModel> Customers { get; set; }
-        public string Country { get; set; }
+        public CountryE Country { get; set; }
         public string Culom { get; set; }
         public string Order { get; set; }
         public int CurrentPage { get; set; }
         public string Quastion { get; set; }
         public int MaxPage { get; set; }
-        public void OnGet(string country, string sortColumn, string sortOrder, int pageNumb, string quastion)
+        public void OnGet(CountryE country, string sortColumn, string sortOrder, int pageNumb, string quastion)
         {
             Country = country;
             Quastion = quastion;

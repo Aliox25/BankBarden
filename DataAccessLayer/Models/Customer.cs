@@ -20,7 +20,7 @@ public partial class Customer
 
     public string Zipcode { get; set; } = null!;
 
-    public string Country { get; set; } = null!;
+    public CountryE Country { get; set; }
 
     public string CountryCode { get; set; } = null!;
 

@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.DTOs;
 using DataAccessLayer.Models;
+using DataAccessLayer.Models.ENUM;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace Service.CountryService
             .GroupBy(c => c.Country)
             .Select(c => new CountryDTO
             {
-                Country = c.Key,
+                Country = (CountryE)Convert.ToInt32(c.Key),
                 UserCount = c.Count(),
                 CountryTotalMoney = c.Sum(c => c.Dispositions.Sum(d => d.Account.Balance))
             })

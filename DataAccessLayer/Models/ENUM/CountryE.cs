@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Models.ENUM
 {
-    public enum GenderE
+    public enum CountryE
     {
-        Choose_Gender = 0,
-        Male = 1,
-        Female = 2,
-        Unknown = 3
+        Choose_Country = 0,
+        Sweden = 1,
+        Denmark = 2,
+        Norway = 3,
+        Finland = 4,
     }
-
 }

@@ -2,6 +2,7 @@
 using DataAccessLayer.Models;
 using DataAccessLayer.Models.ENUM;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using NuGet.Packaging.Signing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Service.CustomerService.CRUDCustomer
             _dbContext = dbContext;
         }
 
-        public void CreateCustoms(string FN, string LN, GenderE GE, string SA, string C, string CT, string PC)
+        public void CreateCustoms(string FN, string LN, GenderE GE, string SA, string C, CountryE CT, string PC)
         {
             var customerDTO = new Customer
             {
@@ -37,9 +38,11 @@ namespace Service.CustomerService.CRUDCustomer
             _dbContext.SaveChanges();
         }
 
-        public string GetCountryCode(string country)
+        public string GetCountryCode(CountryE country)
         {
-            return country?.Substring(0, 2).ToUpper() ?? "";
+            var enumCode = Enum.GetName(typeof(CountryE), country);
+            var countryCode = enumCode.Substring(0, 2).ToUpper();
+            return countryCode;
         }
     }
 }

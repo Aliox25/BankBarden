@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessLayer.Models.ENUM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace DataAccessLayer.DTOs
 {
     public class CountryDTO
     {
-        public string Country { get; set; }
+        public CountryE Country { get; set; }
         public int UserCount { get; set; }
         public decimal CountryTotalMoney { get; set; }
     }

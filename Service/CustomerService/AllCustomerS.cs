@@ -38,7 +38,7 @@ namespace Service.CustomerService
                 page = 1;
             return page;
         }
-        public int GetMaxPage(string country, string quastion)
+        public int GetMaxPage(CountryE country, string quastion)
         {
             var quary = _dbContext.Customers
             .Select(c => new AllCustomerDTO
@@ -46,19 +46,19 @@ namespace Service.CustomerService
                 Id = c.CustomerId,
                 Name = c.Givenname,
                 City = c.City,
-                Country = c.Country
+                Country = (CountryE)Convert.ToInt32(c.Country)
             });
 
-            if (country != null)
+            if (country != 0)
             {
                 quary = _dbContext.Customers
-                .Where(c => c.Country == country)
+                .Where(c => (CountryE)Convert.ToInt32(c.Country) == country)
                 .Select(c => new AllCustomerDTO
                 {
                     Id = c.CustomerId,
                     Name = c.Givenname,
                     City = c.City,
-                    Country = c.Country
+                    Country = (CountryE)Convert.ToInt32(c.Country)
                 });
             }
 
@@ -77,7 +77,7 @@ namespace Service.CustomerService
             return MaxPage;
 
         }
-        public List<AllCustomerDTO> GetCustomers(string country, string colum, string order, int page, string quastion)
+        public List<AllCustomerDTO> GetCustomers(CountryE country, string colum, string order, int page, string quastion)
         {
             var quary = _dbContext.Customers
                 .Select(c => new AllCustomerDTO
@@ -85,19 +85,19 @@ namespace Service.CustomerService
                     Id = c.CustomerId,
                     Name = c.Givenname,
                     City = c.City,
-                    Country = c.Country
+                    Country = (CountryE)Convert.ToInt32(c.Country)
                 });
 
-            if (country != null)
+            if (country != 0)
             {
                 quary = _dbContext.Customers
-                .Where(c => c.Country == country)
+                .Where(c => (CountryE)Convert.ToInt32(c.Country) == country)
                 .Select(c => new AllCustomerDTO
                 {
                     Id = c.CustomerId,
                     Name = c.Givenname,
                     City = c.City,
-                    Country = c.Country
+                    Country = (CountryE)Convert.ToInt32(c.Country)
                 });
             }
 
@@ -128,7 +128,6 @@ namespace Service.CustomerService
             quary = quary.Skip(amountPerPage).Take(20);
 
             return quary.ToList();
-
         }
 
 
