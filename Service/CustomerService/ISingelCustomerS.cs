@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.DTOs;
+using DataAccessLayer.Models.ENUM;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,7 @@ namespace Service.CustomerService
         SingelCustomerDTO GetCustomer(int customerId);
         List<SelectListItem> Fillgenderlist();
         List<SelectListItem> FillCountrylist();
+        string GetCountryCode(CountryE country);
     }
+
 }

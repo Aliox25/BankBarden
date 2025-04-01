@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace Service.CustomerService.CRUDCustomer
 {
-    public interface ICreateCustomerS
+    public interface IEditCustomerS
     {
-        void CreateCustoms(string FN, string LN, GenderE GE, string SA, string C, CountryE CT, string PC);
+        void UpdateCustomer(int custId, string FN, string LN, GenderE GE, string SA, string C, CountryE CT, string PC);
+        CRUDCustomerDTO GetCustomerDTO(int custId);
+
     }
 }

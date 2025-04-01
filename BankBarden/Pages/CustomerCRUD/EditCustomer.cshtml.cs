@@ -1,25 +1,24 @@
-using BankBarden.ViewModels;
-using DataAccessLayer.Models;
 using DataAccessLayer.Models.ENUM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Service.CustomerService;
 using Service.CustomerService.CRUDCustomer;
+using Service.CustomerService;
 using System.ComponentModel.DataAnnotations;
+using DataAccessLayer.Models;
 
 namespace BankBarden.Pages.CustomerCRUD
 {
     [BindProperties]
-    public class CreateCustomerModel : PageModel
+    public class EditCustomerModel : PageModel
     {
-        private readonly ICreateCustomerS _createCusS;
+        private readonly IEditCustomerS _editCusS;
         private readonly ISingelCustomerS _customerS;
 
 
-        public CreateCustomerModel(ICreateCustomerS createCusS, ISingelCustomerS customerS)
+        public EditCustomerModel(IEditCustomerS editCusS, ISingelCustomerS customerS)
         {
-            _createCusS = createCusS;
+            _editCusS = editCusS;
             _customerS = customerS;
         }
 
@@ -47,17 +46,27 @@ namespace BankBarden.Pages.CustomerCRUD
         public CountryE Country { get; set; }
         public List<SelectListItem> Countries { get; set; }
 
-        public void OnGet()
+        public void OnGet(int custumarId)
         {
             Genders = _customerS.Fillgenderlist();
             Countries = _customerS.FillCountrylist();
+
+            var customerDB = _editCusS.GetCustomerDTO(custumarId);
+            FirstName = customerDB.FirstName;
+            LastName = customerDB.LastName;
+            Gender = customerDB.Gender;
+            Streetaddress = customerDB.Streetaddress;
+            City = customerDB.City;
+            Postcode = customerDB.Postcode;
+            Country = customerDB.Country;
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(int custumarId)
         {
             if (ModelState.IsValid)
             {
-                _createCusS.CreateCustoms(
+                _editCusS.UpdateCustomer(
+                    custumarId,
                     FirstName,
                     LastName,
                     Gender,
@@ -66,11 +75,19 @@ namespace BankBarden.Pages.CustomerCRUD
                     Country,
                     Postcode
                 );
-                return RedirectToPage("/Customers");
+
+                return RedirectToPage("/CustomerInfo", new { custId = custumarId });
+
             }
             Genders = _customerS.Fillgenderlist();
             Countries = _customerS.FillCountrylist();
             return Page();
+
+
         }
+
+
+
+
     }
 }

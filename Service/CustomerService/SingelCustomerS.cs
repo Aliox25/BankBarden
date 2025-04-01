@@ -42,6 +42,7 @@ namespace Service.CustomerService
 
         }
 
+
         public List<SelectListItem> Fillgenderlist()
         {
             return Enum.GetValues<GenderE>().Select(e => new SelectListItem
@@ -60,6 +61,13 @@ namespace Service.CustomerService
                 Text = e.ToString()
             }).ToList();
 
+        }
+
+        public string GetCountryCode(CountryE country)
+        {
+            var enumCode = Enum.GetName(typeof(CountryE), country);
+            var countryCode = enumCode.Substring(0, 2).ToUpper();
+            return countryCode;
         }
     }
 }

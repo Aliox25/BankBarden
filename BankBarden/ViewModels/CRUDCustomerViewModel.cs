@@ -2,7 +2,7 @@
 
 namespace BankBarden.ViewModels
 {
-    public class CreateCustomerViewModel
+    public class CRUDCustomerViewModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -10,7 +10,7 @@ namespace BankBarden.ViewModels
         public string Streetaddress { get; set; }
         public string City { get; set; }
         public string Postcode { get; set; }
-        public string Country { get; set; }
+        public CountryE Country { get; set; }
 
 
 

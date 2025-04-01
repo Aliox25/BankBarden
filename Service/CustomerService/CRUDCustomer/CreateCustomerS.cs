@@ -14,10 +14,12 @@ namespace Service.CustomerService.CRUDCustomer
     public class CreateCustomerS : ICreateCustomerS
     {
         private readonly BankAppDataContext _dbContext;
+        private readonly ISingelCustomerS _singelCustomerS;
 
-        public CreateCustomerS(BankAppDataContext dbContext)
+        public CreateCustomerS(BankAppDataContext dbContext, ISingelCustomerS singelCustomerS)
         {
             _dbContext = dbContext;
+            _singelCustomerS = singelCustomerS;
         }
 
         public void CreateCustoms(string FN, string LN, GenderE GE, string SA, string C, CountryE CT, string PC)
@@ -31,18 +33,13 @@ namespace Service.CustomerService.CRUDCustomer
                 City = C,
                 Country = CT,
                 Zipcode = PC,
-                CountryCode = GetCountryCode(CT)
+                CountryCode = _singelCustomerS.GetCountryCode(CT)
             };
 
             _dbContext.Customers.Add(customerDTO);
             _dbContext.SaveChanges();
         }
 
-        public string GetCountryCode(CountryE country)
-        {
-            var enumCode = Enum.GetName(typeof(CountryE), country);
-            var countryCode = enumCode.Substring(0, 2).ToUpper();
-            return countryCode;
-        }
+
     }
 }

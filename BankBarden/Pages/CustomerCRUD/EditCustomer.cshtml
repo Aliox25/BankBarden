@@ -1,0 +1,61 @@
+﻿@page
+@model BankBarden.Pages.CustomerCRUD.EditCustomerModel
+@{
+}
+
+<div class="add-top-padding add-bot-padding">
+    <div class="container">
+        <h1>Update Customer</h1>
+
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">FirstName</label>
+                <input type="text" class="form-control" asp-for="FirstName" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">LastName</label>
+                <input type="text" class="form-control" asp-for="LastName" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Gender">Gender</label>
+                <select class="form-control" asp-for="Gender" asp-items="@Model.Genders">
+                </select>
+                <span asp-validation-for="Gender"
+                      class="field-validation-error"></span>
+
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Streetaddress</label>
+                <input type="text" class="form-control" asp-for="Streetaddress" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">City</label>
+                <input type="text" class="form-control" asp-for="City" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Postcode</label>
+                <input type="text" class="form-control" asp-for="Postcode" />
+                <span asp-validation-for="Postcode"
+                      class="field-validation-error"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Country">Country</label>
+                <select class="form-control" asp-for="Country" asp-items="@Model.Countries">
+                </select>
+                <span asp-validation-for="Country"
+                      class="field-validation-error"></span>
+
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>

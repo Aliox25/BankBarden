@@ -10,7 +10,9 @@
     <div class="container">
         <h1>@Model.Customer.FirstName   @Model.Customer.LastName    @Model.Customer.Id</h1>
         <h2>@Model.Customer.Balance Kr</h2>
-        
+
+        <a class="nav-link" asp-route-custumarId="@Model.Customer.Id" asp-area="" asp-page="/CustomerCRUD/EditCustomer">Edit Customer</a>
+
         <h3>Accounts</h3>
         <table class="table table-striped">
             <thead>

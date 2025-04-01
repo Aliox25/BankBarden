@@ -35,6 +35,7 @@ public class Program
         builder.Services.AddTransient<IAccountS, AccountS>();
         builder.Services.AddTransient<ISingelCustomerS, SingelCustomerS>();
         builder.Services.AddTransient<ICreateCustomerS , CreateCustomerS>();
+        builder.Services.AddTransient<IEditCustomerS, EditCustomerS>();
 
 
         var app = builder.Build();
