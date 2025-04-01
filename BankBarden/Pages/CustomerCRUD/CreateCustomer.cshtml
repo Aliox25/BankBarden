@@ -46,8 +46,12 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Country</label>
-                <input type="text" class="form-control" asp-for="Country" />
+                <label asp-for="Country">Country</label>
+                <select class="form-control" asp-for="Country" asp-items="@Model.Countries">
+                </select>
+                <span asp-validation-for="Country"
+                      class="field-validation-error"></span>
+
             </div>
 
             <div>

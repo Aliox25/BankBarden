@@ -35,11 +35,15 @@ namespace BankBarden.Pages.CustomerCRUD
 
         [RegularExpression(@"^\d{5}$", ErrorMessage = "Please enter a valid postcode!")]
         public string Postcode { get; set; }
+
+        [Range(1, 99, ErrorMessage = "Please choose a valid country!")]
         public CountryE Country { get; set; }
-        
+        public List<SelectListItem> Countries { get; set; }
+
         public void OnGet()
         {
             Genders = _customerS.Fillgenderlist();
+            Countries = _customerS.FillCountrylist();
         }
 
         public IActionResult OnPost()
@@ -58,6 +62,7 @@ namespace BankBarden.Pages.CustomerCRUD
                 return RedirectToPage("/Customers");
             }
             Genders = _customerS.Fillgenderlist();
+            Countries = _customerS.FillCountrylist();
             return Page();
         }
     }

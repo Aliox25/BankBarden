@@ -12,5 +12,6 @@ namespace Service.CustomerService
     {
         SingelCustomerDTO GetCustomer(int customerId);
         List<SelectListItem> Fillgenderlist();
+        List<SelectListItem> FillCountrylist();
     }
 }

@@ -52,26 +52,14 @@ namespace Service.CustomerService
 
         }
 
-        //public IEnumerable<CountryDTO> GetCountries()
-        //{
-        //    var custQuary = _dbContext.Customers
-        //        .Include(c => c.Dispositions)
-        //        .ThenInclude(c => c.Account)
-        //        .GroupBy(c => c.Country)
-        //        .ToList();
+        public List<SelectListItem> FillCountrylist()
+        {
+            return Enum.GetValues<CountryE>().Select(e => new SelectListItem
+            {
+                Value = e.ToString(),
+                Text = e.ToString()
+            }).ToList();
 
-        //    var countQuary = _dbContext.Countries
-        //        .ToList();
-
-
-        //    return new CountryDTO
-        //        {
-        //            CountryName = c.Name,
-        //            UserCount = c.Customers.Count(),
-        //            CountryTotalMoney = c.Customers.Sum(c => c.Dispositions.Sum(d => d.Account.Balance))
-        //        })
-        //        .ToList();
-        //}
-
+        }
     }
 }
