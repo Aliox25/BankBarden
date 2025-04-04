@@ -37,6 +37,11 @@ namespace Service.CustomerService
                 Id = quary.CustomerId,
                 FirstName = quary.Givenname,
                 LastName = quary.Surname,
+                Gender = quary.Gender,
+                Streetaddress = quary.Streetaddress,
+                City = quary.City,
+                Zipcode = quary.Zipcode,
+                Country = quary.Country,
                 Balance = totalBalance
             };
 

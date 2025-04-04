@@ -31,7 +31,12 @@ namespace BankBarden.Pages
                 Id = quary.Id,
                 FirstName = quary.FirstName,
                 LastName = quary.LastName,
-                Balance = quary.Balance,
+                Gender = quary.Gender,
+                Streetaddress = quary.Streetaddress,
+                City = quary.City,
+                Zipcode = quary.Zipcode,
+                Country = quary.Country,
+                Balance = quary.Balance
             };
 
             Accounts = _accountS.GetAccounts(custId).Select(a => new AcountViewModel

@@ -11321,3 +11321,14 @@ section#contact form#contactForm :-ms-input-placeholder {
 .add-bot-padding {
     padding-bottom: 5rem;
 }
+
+.add-smal-pading-around {
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.box-border {
+    border: 3px solid #e9ecef;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}

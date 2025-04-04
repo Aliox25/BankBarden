@@ -30,7 +30,7 @@ namespace Service.CustomerService.CRUDCustomer
                 Gender = customerDTO.Gender,
                 Streetaddress = customerDTO.Streetaddress,
                 City = customerDTO.City,
-                Postcode = customerDTO.Zipcode,
+                Zipcode = customerDTO.Zipcode,
                 Country = customerDTO.Country,
             };
 

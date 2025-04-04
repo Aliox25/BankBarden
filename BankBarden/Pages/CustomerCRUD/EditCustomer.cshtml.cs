@@ -41,7 +41,7 @@ namespace BankBarden.Pages.CustomerCRUD
         [Required(ErrorMessage = "Please enter a city")]
         public string City { get; set; }
 
-        public string Postcode { get; set; }
+        public string Zipcode { get; set; }
 
         [Range(1, 99, ErrorMessage = "Please choose a valid country")]
         public CountryE Country { get; set; }
@@ -59,7 +59,7 @@ namespace BankBarden.Pages.CustomerCRUD
             Gender = customerDB.Gender;
             Streetaddress = customerDB.Streetaddress;
             City = customerDB.City;
-            Postcode = customerDB.Postcode;
+            Zipcode = customerDB.Zipcode;
             Country = customerDB.Country;
         }
 
@@ -75,7 +75,7 @@ namespace BankBarden.Pages.CustomerCRUD
                     Streetaddress,
                     City,
                     Country,
-                    Postcode
+                    Zipcode
                 );
 
                 return RedirectToPage("/CustomerInfo", new { custId = custumarId });

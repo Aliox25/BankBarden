@@ -10,6 +10,6 @@ namespace Service.CustomerService.CRUDCustomer
 {
     public interface ICreateCustomerS
     {
-        void CreateCustoms(string FN, string LN, GenderE GE, string SA, string C, CountryE CT, string PC);
+        void CreateCustoms(string FN, string LN, GenderE GE, string SA, string C, CountryE CT, string ZC);
     }
 }

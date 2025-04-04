@@ -22,7 +22,7 @@ namespace Service.CustomerService.CRUDCustomer
             _singelCustomerS = singelCustomerS;
         }
 
-        public void CreateCustoms(string FN, string LN, GenderE GE, string SA, string C, CountryE CT, string PC)
+        public void CreateCustoms(string FN, string LN, GenderE GE, string SA, string C, CountryE CT, string ZC)
         {
             var customerDTO = new Customer
             {
@@ -32,7 +32,7 @@ namespace Service.CustomerService.CRUDCustomer
                 Streetaddress = SA,
                 City = C,
                 Country = CT,
-                Zipcode = PC,
+                Zipcode = ZC,
                 CountryCode = _singelCustomerS.GetCountryCode(CT)
             };
 
