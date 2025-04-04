@@ -6,6 +6,7 @@ using Service.CustomerService.CRUDCustomer;
 using Service.CustomerService;
 using System.ComponentModel.DataAnnotations;
 using DataAccessLayer.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BankBarden.Pages.CustomerCRUD
 {
@@ -22,6 +23,7 @@ namespace BankBarden.Pages.CustomerCRUD
             _customerS = customerS;
         }
 
+        public int CustomerId { get; set; }
 
         [Required(ErrorMessage = "Please enter a first name")]
         public string FirstName { get; set; }
@@ -47,6 +49,7 @@ namespace BankBarden.Pages.CustomerCRUD
 
         public void OnGet(int custumarId)
         {
+            CustomerId = custumarId;
             Genders = _customerS.Fillgenderlist();
             Countries = _customerS.FillCountrylist();
 
@@ -83,6 +86,12 @@ namespace BankBarden.Pages.CustomerCRUD
             return Page();
 
 
+        }
+
+        public IActionResult OnPostDelete(int custumarId)
+        {
+            _editCusS.SoftDeleteCustomer(custumarId);
+            return RedirectToPage("/Customers");
         }
 
 

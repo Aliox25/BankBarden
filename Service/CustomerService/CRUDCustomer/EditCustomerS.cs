@@ -52,6 +52,12 @@ namespace Service.CustomerService.CRUDCustomer
             _dbContext.SaveChanges();
         }
 
+        public void SoftDeleteCustomer(int custId)
+        {
+            var customerDB = _dbContext.Customers.FirstOrDefault(c => c.CustomerId == custId);
+            customerDB.IsActiv = false;
+            _dbContext.SaveChanges();
+        }
 
     }
 }

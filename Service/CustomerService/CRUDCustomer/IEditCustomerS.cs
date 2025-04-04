@@ -12,6 +12,7 @@ namespace Service.CustomerService.CRUDCustomer
     {
         void UpdateCustomer(int custId, string FN, string LN, GenderE GE, string SA, string C, CountryE CT, string PC);
         CRUDCustomerDTO GetCustomerDTO(int custId);
+        void SoftDeleteCustomer(int custId);
 
     }
 }

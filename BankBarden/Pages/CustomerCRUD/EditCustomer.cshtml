@@ -8,6 +8,7 @@
         <h1>Update Customer</h1>
 
         <form method="post">
+            <input type="hidden" name="custumarId" value="@Model.CustomerId" />
             <div class="mb-3">
                 <label class="form-label">FirstName</label>
                 <input type="text" class="form-control" asp-for="FirstName" />
@@ -53,9 +54,29 @@
 
             </div>
 
-            <div>
-                <button type="submit" class="btn btn-primary">Update</button>
+            <div class="mb-3 d-flex justify-content-center">
+
+                <button type="submit"
+                        class="btn btn-primary mx-1"
+                        style="width:120px">
+                    Update
+                </button>
+
+                <button type="submit"
+                        class="btn btn-danger mx-1"
+                        style="width:120px"
+                        asp-page-handler="Delete">
+                    Delete
+                </button>
+
+                <a asp-page="/CustomerInfo"
+                   asp-route-custId="@Model.CustomerId"
+                   class="btn btn-secondary mx-1"
+                   style="width:120px">
+                    Go Back
+                </a>
             </div>
+
         </form>
     </div>
 </div>
