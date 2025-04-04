@@ -41,18 +41,7 @@ namespace Service.CustomerService
         public int GetMaxPage(CountryE country, string quastion)
         {
             var quary = _dbContext.Customers
-            .Select(c => new AllCustomerDTO
-            {
-                Id = c.CustomerId,
-                Name = c.Givenname,
-                City = c.City,
-                Country = (CountryE)Convert.ToInt32(c.Country)
-            });
-
-            if (country != 0)
-            {
-                quary = _dbContext.Customers
-                .Where(c => (CountryE)Convert.ToInt32(c.Country) == country)
+                .Where(c => c.IsActiv == true)
                 .Select(c => new AllCustomerDTO
                 {
                     Id = c.CustomerId,
@@ -60,6 +49,19 @@ namespace Service.CustomerService
                     City = c.City,
                     Country = (CountryE)Convert.ToInt32(c.Country)
                 });
+
+            if (country != 0)
+            {
+                quary = _dbContext.Customers
+                    .Where(c => c.IsActiv == true)
+                    .Where(c => (CountryE)Convert.ToInt32(c.Country) == country)
+                    .Select(c => new AllCustomerDTO
+                    {
+                        Id = c.CustomerId,
+                        Name = c.Givenname,
+                        City = c.City,
+                        Country = (CountryE)Convert.ToInt32(c.Country)
+                    });
             }
 
             if (!string.IsNullOrEmpty(quastion))
@@ -80,6 +82,7 @@ namespace Service.CustomerService
         public List<AllCustomerDTO> GetCustomers(CountryE country, string colum, string order, int page, string quastion)
         {
             var quary = _dbContext.Customers
+                .Where(c => c.IsActiv == true)
                 .Select(c => new AllCustomerDTO
                 {
                     Id = c.CustomerId,
@@ -91,14 +94,15 @@ namespace Service.CustomerService
             if (country != 0)
             {
                 quary = _dbContext.Customers
-                .Where(c => (CountryE)Convert.ToInt32(c.Country) == country)
-                .Select(c => new AllCustomerDTO
-                {
-                    Id = c.CustomerId,
-                    Name = c.Givenname,
-                    City = c.City,
-                    Country = (CountryE)Convert.ToInt32(c.Country)
-                });
+                    .Where(c => c.IsActiv == true)
+                    .Where(c => (CountryE)Convert.ToInt32(c.Country) == country)
+                    .Select(c => new AllCustomerDTO
+                    {
+                        Id = c.CustomerId,
+                        Name = c.Givenname,
+                        City = c.City,
+                        Country = (CountryE)Convert.ToInt32(c.Country)
+                    });
             }
 
             if (colum == "Id")
