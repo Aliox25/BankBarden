@@ -40,7 +40,6 @@ namespace BankBarden.Pages.CustomerCRUD
         [Required(ErrorMessage = "Please enter a city")]
         public string City { get; set; }
 
-        [RegularExpression(@"^\d{5}$", ErrorMessage = "Please enter a postcode that is 5 numbers long")]
         public string Postcode { get; set; }
 
         [Range(1, 99, ErrorMessage = "Please choose a valid country")]
