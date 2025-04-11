@@ -4,7 +4,7 @@
 }
 
 <div class="add-top-padding">
-    <div class="container">
+    <div class="container body-container">
 
         <div class="box-border">
             <h1>Customer Id: @Model.Customer.Id</h1>
@@ -16,28 +16,33 @@
             <div class="mb-3 d-flex justify-content-start">
 
                 <a asp-route-custumarId="@Model.Customer.Id"
-                    asp-area=""
                     asp-page="/CustomerCRUD/EditCustomer"
                    class="btn btn-primary mx-1"
-                   style="width:120px">
+                   style="width:150px">
                     Edit Customer
                 </a>
 
 
                 <a asp-page="/Customers"
                    class="btn btn-secondary mx-1"
-                   style="width:120px">
+                   style="width:150px">
                     Go Back
                 </a>
 
             </div>
 
-
-           
         </div>
 
         <div class="box-border">
             <h3>Accounts</h3>
+            <div class="mb-3 d-flex justify-content-start">
+                <a asp-route-custumarId="@Model.Customer.Id"
+                   asp-page="/AccountCRUD/CreateAccount"
+                   class="btn btn-primary mx-1"
+                   style="width:150px">
+                    Add Accounts
+                </a>
+            </div>
             <table class="table table-striped">
                 <thead>
                     <tr>

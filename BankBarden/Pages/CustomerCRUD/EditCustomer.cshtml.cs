@@ -50,7 +50,7 @@ namespace BankBarden.Pages.CustomerCRUD
         public void OnGet(int custumarId)
         {
             CustomerId = custumarId;
-            Genders = _customerS.Fillgenderlist();
+            Genders = _customerS.FillGenderlist();
             Countries = _customerS.FillCountrylist();
 
             var customerDB = _editCusS.GetCustomerDTO(custumarId);
@@ -81,7 +81,7 @@ namespace BankBarden.Pages.CustomerCRUD
                 return RedirectToPage("/CustomerInfo", new { custId = custumarId });
 
             }
-            Genders = _customerS.Fillgenderlist();
+            Genders = _customerS.FillGenderlist();
             Countries = _customerS.FillCountrylist();
             return Page();
 

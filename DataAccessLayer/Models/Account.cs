@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessLayer.Models.ENUM;
+using System;
 using System.Collections.Generic;
 
 namespace DataAccessLayer.Models;
@@ -7,7 +8,7 @@ public partial class Account
 {
     public int AccountId { get; set; }
 
-    public string Frequency { get; set; } = null!;
+    public AccFrequencyE Frequency { get; set; }
 
     public DateOnly Created { get; set; }
 

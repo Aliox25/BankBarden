@@ -48,7 +48,7 @@ namespace Service.CustomerService
         }
 
 
-        public List<SelectListItem> Fillgenderlist()
+        public List<SelectListItem> FillGenderlist()
         {
             return Enum.GetValues<GenderE>().Select(e => new SelectListItem
             {

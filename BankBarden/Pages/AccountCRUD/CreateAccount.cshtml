@@ -1,0 +1,46 @@
+﻿@page
+@model BankBarden.Pages.AccountCRUD.CreateAccountModel
+@{
+}
+
+<div class="add-top-padding add-bot-padding">
+    <div class="container">
+        <h1>Create new Account</h1>
+        <form method="post">
+
+            <div class="mb-3">
+                <label asp-for="Balance">Balance</label>
+                <input type="text" class="form-control" asp-for="Balance" />
+                <span asp-validation-for="Balance"
+                      class="field-validation-error"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Frequency">Frequency</label>
+                <select class="form-control" asp-for="Frequency" asp-items="@Model.Frequencies">
+                </select>
+                <span asp-validation-for="Frequency"
+                      class="field-validation-error"></span>
+
+            </div>
+
+            <div class="mb-3 d-flex justify-content-center">
+
+                <button type="submit"
+                        class="btn btn-primary mx-1"
+                        style="width:120px">
+                    Save
+                </button>
+
+
+                <a asp-page="/CustomerInfo"
+                   asp-route-custId="@Model.CustomerId"
+                   class="btn btn-secondary mx-1"
+                   style="width:120px">
+                    Go Back
+                </a>
+
+            </div>
+        </form>
+    </div>
+</div>
+

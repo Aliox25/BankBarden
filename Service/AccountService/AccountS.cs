@@ -1,5 +1,7 @@
 ﻿using DataAccessLayer.DTOs;
 using DataAccessLayer.Models;
+using DataAccessLayer.Models.ENUM;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -31,6 +33,15 @@ namespace Service.AccountService
 
             return quarry.ToList();
         }
+         
+        public List<SelectListItem> FillFrequencyList()
+        {
+            return Enum.GetValues<AccFrequencyE>().Select(e => new SelectListItem
+            {
+                Value = e.ToString(),
+                Text = e.ToString()
+            }).ToList();
+        }
 
         public AccountDTO GetSingelAccount(int accountId)
         {
@@ -41,6 +52,34 @@ namespace Service.AccountService
                 Id = quarry.AccountId,
                 Balance = quarry.Balance
             };
+        }
+
+        public void CreateAccount(int customerId, decimal balance, AccFrequencyE frequency)
+        {
+            var customer = _dbContext.Customers
+                .Include(c => c.Dispositions)
+                .ThenInclude(c => c.Account)
+                .First(c => c.CustomerId == customerId);
+
+            var account = new Account
+            {
+                Balance = balance,
+                Frequency = frequency,
+                Created = DateOnly.FromDateTime(DateTime.Now)
+            };
+
+            _dbContext.Accounts.Add(account);
+
+            customer.Dispositions.Add(new Disposition
+            {
+                AccountId = account.AccountId,
+                Account = account,
+                CustomerId = customer.CustomerId,
+                Customer = customer,
+                Type = "OWNER"
+            });
+
+            Update();
         }
 
         public void Update()

@@ -49,7 +49,7 @@ namespace BankBarden.Pages.CustomerCRUD
 
         public void OnGet()
         {
-            Genders = _customerS.Fillgenderlist();
+            Genders = _customerS.FillGenderlist();
             Countries = _customerS.FillCountrylist();
         }
 
@@ -68,7 +68,7 @@ namespace BankBarden.Pages.CustomerCRUD
                 );
                 return RedirectToPage("/Customers");
             }
-            Genders = _customerS.Fillgenderlist();
+            Genders = _customerS.FillGenderlist();
             Countries = _customerS.FillCountrylist();
             return Page();
         }

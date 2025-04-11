@@ -12,7 +12,7 @@ namespace Service.CustomerService
     public interface ISingelCustomerS
     {
         SingelCustomerDTO GetCustomer(int customerId);
-        List<SelectListItem> Fillgenderlist();
+        List<SelectListItem> FillGenderlist();
         List<SelectListItem> FillCountrylist();
         string GetCountryCode(CountryE country);
     }

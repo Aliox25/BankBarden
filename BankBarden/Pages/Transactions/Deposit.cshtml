@@ -24,7 +24,25 @@
                 <input class="form-control" asp-for="Comment" />
                 <span class="field-validation-error" asp-validation-for="Comment"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Deposit</button>
+
+            <div class="mb-3 d-flex py-2 justify-content-start">
+
+                <button type="submit"
+                        class="btn btn-primary mx-1"
+                        style="width:120px">
+                    Deposit
+                </button>
+
+
+                <a asp-page="/Customerinfo"
+                   asp-route-custId="@Model.CustomerId"
+                   class="btn btn-secondary mx-1"
+                   style="width:120px">
+                    Go Back
+                </a>
+
+            </div>
+
         </form>
 
     </div>
