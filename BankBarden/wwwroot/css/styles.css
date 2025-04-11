@@ -11332,3 +11332,15 @@ section#contact form#contactForm :-ms-input-placeholder {
     border-radius: 0.5rem;
     padding: 1rem;
 }
+
+.navbar {
+    height: 10vh;
+}
+
+.body-container {
+    min-height: 68vh;
+}
+
+.footer {
+    height: 10vh;
+}

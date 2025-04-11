@@ -40,6 +40,7 @@ namespace BankBarden.Pages.CustomerCRUD
         [Required(ErrorMessage = "Please enter a city")]
         public string City { get; set; }
 
+        [Required(ErrorMessage = "Please enter a zipcode that is 5 numbers long")]
         public string Zipcode { get; set; }
 
         [Range(1, 99, ErrorMessage = "Please choose a valid country")]
