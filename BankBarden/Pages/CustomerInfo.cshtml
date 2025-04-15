@@ -6,7 +6,7 @@
 <div class="add-top-padding">
     <div class="container body-container">
 
-        <div class="box-border">
+        <div class="box-border add-smal-pading-around">
             <h1>Customer Id: @Model.Customer.Id</h1>
             <h2>@Model.Customer.FirstName @Model.Customer.LastName, @Model.Customer.Gender</h2>
             <h3>@Model.Customer.Country, @Model.Customer.City</h3>
@@ -33,7 +33,7 @@
 
         </div>
 
-        <div class="box-border">
+        <div class="box-border add-smal-pading-around">
             <h3>Accounts</h3>
             <div class="mb-3 d-flex justify-content-start">
                 <a asp-route-custumarId="@Model.Customer.Id"

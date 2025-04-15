@@ -54,7 +54,7 @@ namespace Service.AccountService
             };
         }
 
-        public void CreateAccount(int customerId, decimal balance, AccFrequencyE frequency)
+        public void CreateAccount(int customerId, decimal balance, AccFrequencyE frequency, string accountType)
         {
             var customer = _dbContext.Customers
                 .Include(c => c.Dispositions)
@@ -76,7 +76,7 @@ namespace Service.AccountService
                 Account = account,
                 CustomerId = customer.CustomerId,
                 Customer = customer,
-                Type = "OWNER"
+                Type = accountType
             });
 
             Update();
@@ -89,6 +89,15 @@ namespace Service.AccountService
                 .Include(a => a.Account)
                 .Where(c => c.CustomerId == customerId).Count();
             return quarry;
+        }
+        public List<SelectListItem> FillAccoutnTypeList()
+        {
+            return new List<SelectListItem>
+            {
+                new SelectListItem { Value = "OWNER", Text = "Owner" },
+                new SelectListItem { Value = "DISPONENT", Text = "Disponent" }
+            };
+
         }
 
         public void Update()

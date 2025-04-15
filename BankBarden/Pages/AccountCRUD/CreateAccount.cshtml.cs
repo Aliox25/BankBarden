@@ -27,17 +27,21 @@ namespace BankBarden.Pages.AccountCRUD
         public AccFrequencyE Frequency { get; set; }
         public List<SelectListItem> Frequencies { get; set; }
 
+        public string AccountType { get; set; }
+        public List<SelectListItem> AccountTypes { get; set; }
+
 
         public void OnGet(int custumarId)
         {
             CustomerId = custumarId;
             Frequencies = _accountS.FillFrequencyList();
+            AccountTypes = _accountS.FillAccoutnTypeList();
         }
         public IActionResult OnPost(int custumarId)
         {
             if (ModelState.IsValid)
             {
-                _accountS.CreateAccount(custumarId, Balance, Frequency);
+                _accountS.CreateAccount(custumarId, Balance, Frequency, AccountType);
                 return RedirectToPage("/CustomerInfo", new { custId = custumarId });
             }
             Frequencies = _accountS.FillFrequencyList();

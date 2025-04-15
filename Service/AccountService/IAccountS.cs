@@ -14,7 +14,8 @@ namespace Service.AccountService
     {
         List<AccountDTO> GetAccounts(int custId);
         List<SelectListItem> FillFrequencyList();
-        void CreateAccount(int customerId, decimal balance, AccFrequencyE frequency);
+        List<SelectListItem> FillAccoutnTypeList();
+        void CreateAccount(int customerId, decimal balance, AccFrequencyE frequency, string accountType);
         void Update();
         AccountDTO GetSingelAccount(int accountId);
 
