@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Service.CustomerService;
 using DataAccessLayer.Models.ENUM;
+using Service.AccountService;
 
 namespace BankBarden.Pages
 {
@@ -14,11 +15,12 @@ namespace BankBarden.Pages
     public class CustomersModel : PageModel
     {
         private readonly IAllCustomerS _allCustS;
+        private readonly IAccountS _accountS;
 
-
-        public CustomersModel(IAllCustomerS allCustS)
+        public CustomersModel(IAllCustomerS allCustS, IAccountS accountS)
         {
             _allCustS = allCustS;
+            _accountS = accountS;
         }
 
         public List<AllCustomersViewModel> Customers { get; set; }
@@ -44,6 +46,13 @@ namespace BankBarden.Pages
                 City = c.City,
                 Country = c.Country
             }).ToList();
+        }
+
+        public IActionResult OnGetFetchValue(int customerId)
+        {
+            var accounts = _accountS.GetTotalAccounts(customerId);
+            return new JsonResult(new {Value = accounts});
+
         }
     }
 }

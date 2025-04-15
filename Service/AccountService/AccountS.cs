@@ -82,6 +82,15 @@ namespace Service.AccountService
             Update();
         }
 
+        public int GetTotalAccounts(int customerId)
+        {
+            var quarry = _dbContext
+                .Dispositions
+                .Include(a => a.Account)
+                .Where(c => c.CustomerId == customerId).Count();
+            return quarry;
+        }
+
         public void Update()
         {
             _dbContext.SaveChanges();

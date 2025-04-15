@@ -98,6 +98,7 @@
                         </a>
                     </th>
                     <th scope="col">Country</th>
+                    <th scope="col">Accounts</th>
                     <th scope="col">Info</th>
                 </tr>
             </thead>
@@ -109,11 +110,23 @@
                         <td>@cust.Name</td>
                         <td>@cust.City</td>
                         <td>@cust.Country</td>
+
+
+                        <td>
+                            <a onclick="javascript:fetchEvaluation(@cust.Id, this)"
+                               class="btn btn-primary">
+                                Get value
+                            </a>
+                        </td>
+
+
+
+
                         <td>
                             <a asp-page="CustomerInfo"
                             asp-route-custId="@cust.Id"
                             class="btn btn-primary">
-                                See info
+                                Show Info
                             </a>
                         </td>
 
@@ -138,6 +151,7 @@
                     {
                         <td></td>
                     }
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -166,4 +180,19 @@
         </table>
     </div>
 </div>
+
+
+@section Scripts
+{
+    <script>
+        function fetchEvaluation(id, elem) {
+            fetch("Customers?handler=FetchValue&customerId=" + id)
+                .then((response) => response.json())
+                .then((json) => {
+                    elem.innerHTML = json.value;
+                });
+        }
+    </script>
+}
+
 

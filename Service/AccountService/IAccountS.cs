@@ -18,7 +18,7 @@ namespace Service.AccountService
         void Update();
         AccountDTO GetSingelAccount(int accountId);
 
-
+        int GetTotalAccounts(int customerId);
 
     }
 }
