@@ -62,12 +62,23 @@
                             <td>@account.Id</td>
                             <td>@account.Balance Kr</td>
                             <td>
-                                <a asp-page="/Transactions/Deposit" asp-route-accountId="@account.Id" asp-route-customerId="@Model.Customer.Id"><i class="fa-solid fa-money-bill-trend-up"></i></a>
+                                <a asp-page="/Transactions/Deposit"
+                                asp-route-accountId="@account.Id"
+                                asp-route-customerId="@Model.Customer.Id">
+                                <i class="fa-solid fa-money-bill-trend-up"></i></a>
                             </td>
                             <td>
-                                <a asp-page="/Transactions/Withdrawal" asp-route-accountId="@account.Id" asp-route-customerId="@Model.Customer.Id"><i class="fa-solid fa-coins"></i></a>
+                                <a asp-page="/Transactions/Withdrawal"
+                                asp-route-accountId="@account.Id"
+                                asp-route-customerId="@Model.Customer.Id">
+                                <i class="fa-solid fa-coins"></i></a>
                             </td>
-                            <td></td>
+                            <td>
+                                <a asp-page="/Transactions/Transfer"
+                                asp-route-accountIdFrom="@account.Id"
+                                asp-route-customerId="@Model.Customer.Id">
+                                <i class="fa-solid fa-money-bill-transfer"></i></a>
+                            </td>
                             <td></td>
                             <td></td>
                         </tr>

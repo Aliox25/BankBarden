@@ -43,6 +43,17 @@ namespace Service.AccountService
             }).ToList();
         }
 
+        public List<SelectListItem> FillAccoutnList(int custId)
+        {
+            var quarry = GetAccounts(custId)
+                .Select(a => new SelectListItem
+                {
+                    Value = a.Id.ToString(),
+                    Text = $"Account {a.Id} - Balance: {a.Balance}"
+                });
+            return quarry.ToList();
+        }
+
         public AccountDTO GetSingelAccount(int accountId)
         {
             var quarry = _dbContext.Accounts.First(a => a.AccountId == accountId);

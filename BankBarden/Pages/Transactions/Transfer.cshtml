@@ -1,0 +1,61 @@
+﻿@page
+@model BankBarden.Pages.Transactions.TransferModel
+@{
+}
+
+<div class="add-top-padding">
+    <div class="container body-container">
+
+        <h1>Transfer</h1>
+        <h2>Account: @Model.AccountIdFrom Balance: @Model.Balance</h2>
+        <form method="post">
+
+            <div class="form-group">
+                <label asp-for="Amount">Amount</label>
+                <input class="form-control" asp-for="Amount" />
+                <span class="field-validation-error" asp-validation-for="Amount"></span>
+            </div>
+
+
+            <div class="mb-3">
+                <label asp-for="AccountIdTo">Transfer To Account</label>
+                <select class="form-control" asp-for="AccountIdTo" asp-items="@Model.AccountList">
+                </select>
+                <span asp-validation-for="AccountIdTo"
+                      class="field-validation-error"></span>
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TransferDate">Date</label>
+                <input class="form-control" asp-for="TransferDate" />
+                <span class="field-validation-error" asp-validation-for="TransferDate"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comment">Comment</label>
+                <input class="form-control" asp-for="Comment" />
+                <span class="field-validation-error" asp-validation-for="Comment"></span>
+            </div>
+
+            <div class="mb-3 d-flex py-2 justify-content-start">
+
+                <button type="submit"
+                        class="btn btn-primary mx-1"
+                        style="width:120px">
+                    Transfer
+                </button>
+
+
+                <a asp-page="/Customerinfo"
+                   asp-route-custId="@Model.CustomerId"
+                   class="btn btn-secondary mx-1"
+                   style="width:120px">
+                    Go Back
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
