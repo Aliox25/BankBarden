@@ -27,39 +27,18 @@
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <!-- Portfolio item 1-->
                     <div class="portfolio-item">
-                        <a class="portfolio-link nav-link" asp-area="" asp-page="/Customers" asp-route-country="@country.Country">
-                            <div class="portfolio-hover">
-                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-
-
-                            @if (country.Country == DataAccessLayer.Models.ENUM.CountryE.Sweden)
-                            {
-                                <img class="img-fluid" src="assets/img/Flags/Flag_of_Sweden.svg.webp" alt="..." />
-                            }
-                            else if (country.Country == DataAccessLayer.Models.ENUM.CountryE.Norway)
-                            {
-                                <img class="img-fluid" src="assets/img/Flags/Flag_of_Norway.svg.webp" alt="..." />
-                            }
-                            else if (country.Country == DataAccessLayer.Models.ENUM.CountryE.Denmark)
-                            {
-                                <img class="img-fluid" src="assets/img/Flags/Flag_of_Denmark.svg.webp" alt="..." />
-                            }
-                            else if (country.Country == DataAccessLayer.Models.ENUM.CountryE.Finland)
-                            {
-                                <img class="img-fluid" src="assets/img/Flags/Flag_of_Finland.svg.webp" alt="..." />
-                            }
-                            else
-                            {
-                                <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
-                            }
-
-
-                            <!--TODO Flags-->
-                            @* <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." /> *@
-
-
-                        </a>
+                        @if (User.IsInRole("Cashier"))
+                        {
+                            <a class="portfolio-link nav-link" asp-page="Customers" asp-route-country="@country.Country">
+                                <partial name="_countryLinks" model="country" />
+                            </a>
+                        }
+                        else 
+                        {
+                            <a class="portfolio-link nav-link" asp-page="Top10Customers" asp-route-country="@country.Country">
+                                <partial name="_countryLinks" model="country" />
+                            </a>
+                        }
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">@country.Country</div>
                             <div class="portfolio-caption-subheading text-muted">@country.UserCount</div>

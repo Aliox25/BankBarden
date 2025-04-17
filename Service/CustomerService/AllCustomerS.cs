@@ -79,6 +79,23 @@ namespace Service.CustomerService
             return MaxPage;
 
         }
+
+        public List<AllCustomerDTO> Get10Customer(CountryE country)
+        {
+            var quary = _dbContext.Customers
+                .Where(c => c.IsActiv == true)
+                .Where(c => (CountryE)Convert.ToInt32(c.Country) == country)
+                .Select(c => new AllCustomerDTO
+                {
+                    Id = c.CustomerId,
+                    Name = c.Givenname,
+                    City = c.City,
+                    Country = (CountryE)Convert.ToInt32(c.Country)
+                });
+            return quary.Take(10).ToList();
+        }
+
+
         public List<AllCustomerDTO> GetCustomers(CountryE country, string colum, string order, int page, string quastion)
         {
             var quary = _dbContext.Customers

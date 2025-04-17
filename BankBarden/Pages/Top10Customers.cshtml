@@ -1,0 +1,39 @@
+﻿@page
+@model BankBarden.Pages.Top10CustomersModel
+@{
+}
+
+<div class="add-top-padding">
+    <div class="container">
+        <h1>Top 10 customers from @Model.Country</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Id
+                    </th>
+
+                    <th scope="col">
+                        Name
+                    </th>
+
+                    <th scope="col">
+                        City
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cust in Model.Customers)
+                {
+                    <tr>
+                        <td>@cust.Id</td>
+                        <td>@cust.Name</td>
+                        <td>@cust.City</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

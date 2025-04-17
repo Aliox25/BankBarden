@@ -1,0 +1,27 @@
+﻿@model BankBarden.ViewModels.CountryViewModel
+<div class="portfolio-hover">
+    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+</div>
+
+
+@if (Model.Country == DataAccessLayer.Models.ENUM.CountryE.Sweden)
+{
+    <img class="img-fluid" src="assets/img/Flags/Flag_of_Sweden.svg.webp" alt="..." />
+}
+else if (Model.Country == DataAccessLayer.Models.ENUM.CountryE.Norway)
+{
+    <img class="img-fluid" src="assets/img/Flags/Flag_of_Norway.svg.webp" alt="..." />
+}
+else if (Model.Country == DataAccessLayer.Models.ENUM.CountryE.Denmark)
+{
+    <img class="img-fluid" src="assets/img/Flags/Flag_of_Denmark.svg.webp" alt="..." />
+}
+else if (Model.Country == DataAccessLayer.Models.ENUM.CountryE.Finland)
+{
+    <img class="img-fluid" src="assets/img/Flags/Flag_of_Finland.svg.webp" alt="..." />
+}
+else
+{
+    <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
+}
+

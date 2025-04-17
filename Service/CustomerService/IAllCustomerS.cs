@@ -14,6 +14,7 @@ namespace Service.CustomerService
         string GetColumOrder(string colum);
         string GetSortOrder(string order);
         int GetPageNumber(int page);
+        List<AllCustomerDTO> Get10Customer(CountryE country);
         int GetMaxPage(CountryE country, string quastion);
         List<AllCustomerDTO> GetCustomers(CountryE country, string colum, string order, int page, string quastion);
         
