@@ -28,7 +28,7 @@ namespace BankBarden.Pages.Transactions
         public decimal Amount { get; set; }
         public DateTime WithdralDate { get; set; }
 
-        [MaxLength(100, ErrorMessage = "Comment is to long!")]
+        [MaxLength(50, ErrorMessage = "Comment is to long!")]
         public string? Comment { get; set; }
 
         public void OnGet(int accountId, int customerId)

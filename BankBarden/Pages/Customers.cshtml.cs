@@ -39,7 +39,9 @@ namespace BankBarden.Pages
             CurrentPage = _allCustS.GetPageNumber(pageNumb);
             MaxPage = _allCustS.GetMaxPage(Country, Quastion);
 
-            Customers = _allCustS.GetCustomers(Country, Culom, Order, CurrentPage, Quastion).Select(c => new AllCustomersViewModel
+            Customers = _allCustS
+                .GetCustomers(Country, Culom, Order, CurrentPage, Quastion)
+                .Select(c => new AllCustomersViewModel
             {
                 Id = c.Id,
                 Name = c.Name,

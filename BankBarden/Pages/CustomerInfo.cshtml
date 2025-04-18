@@ -48,11 +48,10 @@
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Balance</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th scope ="col">Deposit</th>
+                        <th scope="col">Withdrawal</th>
+                        <th scope="col">Transfer</th>
+                        <th scope="col">Transactions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -79,8 +78,17 @@
                                 asp-route-customerId="@Model.Customer.Id">
                                 <i class="fa-solid fa-money-bill-transfer"></i></a>
                             </td>
-                            <td></td>
-                            <td></td>
+                            <td>
+
+                                <a asp-route-accountId="@account.Id"
+                                   asp-route-customerId="@Model.Customer.Id"
+                                   asp-page="/Transactions/TransactionsHistory"
+                                   class="btn btn-primary mx-1"
+                                   style="width:150px">
+                                    View Info
+                                </a>
+
+                            </td>
                         </tr>
                     }
                 </tbody>

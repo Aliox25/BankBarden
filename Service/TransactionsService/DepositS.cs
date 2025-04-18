@@ -21,6 +21,19 @@ namespace Service.TransactionsService
         {
             var dbAccount = _dbContext.Accounts.FirstOrDefault(a => a.AccountId == accountId);
             dbAccount.Balance += amount;
+
+            var transaction = new Transaction
+            {
+                AccountId = accountId,
+                Amount = amount,
+                Date = DateOnly.FromDateTime(DateTime.Now),
+                Balance = dbAccount.Balance,
+                Type = "Credit",
+                Operation = "Deposit",
+                Symbol = comment
+            };
+            _dbContext.Transactions.Add(transaction);
+            _dbContext.SaveChanges();
         }
     }
 }

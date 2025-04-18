@@ -36,6 +36,7 @@ public class Program
         builder.Services.AddTransient<ISingelCustomerS, SingelCustomerS>();
         builder.Services.AddTransient<ICreateCustomerS , CreateCustomerS>();
         builder.Services.AddTransient<IEditCustomerS, EditCustomerS>();
+        builder.Services.AddTransient<ITransacrionHistoryS, TransacrionHistoryS>();
 
 
         var app = builder.Build();

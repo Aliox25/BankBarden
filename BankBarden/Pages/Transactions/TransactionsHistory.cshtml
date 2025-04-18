@@ -1,0 +1,37 @@
+﻿@page
+@model BankBarden.Pages.Transactions.TransactionsHistoryModel
+@{
+}
+
+<div class="add-top-padding">
+    <div class="container body-container">
+        <div class="box-border add-smal-pading-around">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Balance</th>
+                        <th scope="col">Comment</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var transaction in Model.TransHistList)
+                    {
+                        <tr>
+                            <td>@transaction.Id</td>
+                            <td>@transaction.Date</td>
+                            <td>@transaction.Amount</td>
+                            <td>@transaction.Balance</td>
+                            <td>@transaction.Symbol</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
