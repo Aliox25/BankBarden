@@ -7,7 +7,10 @@
     <div class="container body-container">
         <div class="box-border add-smal-pading-around">
 
-            <table class="table table-striped">
+            <h1>Transactions History for Account @Model.AccountId</h1>
+
+
+            <table class="table table-striped" id="post-table">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
@@ -16,22 +19,55 @@
                         <th scope="col">Balance</th>
                         <th scope="col">Comment</th>
                     </tr>
-                </thead>
-
+                 </thead>
                 <tbody>
-                    @foreach (var transaction in Model.TransHistList)
-                    {
-                        <tr>
-                            <td>@transaction.Id</td>
-                            <td>@transaction.Date</td>
-                            <td>@transaction.Amount</td>
-                            <td>@transaction.Balance</td>
-                            <td>@transaction.Symbol</td>
-                        </tr>
-                    }
                 </tbody>
             </table>
+
+            <a class="btn btn-primary"
+            href="javascript:showMore();">
+                Show More
+            </a>
+
+
 
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        rowCount = 0;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            showMore();
+        });
+
+        function showMore() {
+             fetch("TransactionsHistory?handler=ShowMore&rowCount=" + rowCount + "&accountId=@Model.AccountId")
+                .then((response) => response.json())
+                .then((json) => {
+                        rowCount = json.rowCount;
+                        json.transHistList.forEach(drawElements);
+                });
+        }
+
+        function drawElements(element) {
+            document.querySelector('#post-table tbody').innerHTML +=
+                `<tr>
+                    <td>${element.id}</td>
+                    <td>${element.date}</td>
+                    <td>${element.amount}</td>
+                    <td>${element.balance}</td>
+                    <td>${element.symbol}</td>
+                    
+                </tr>`;
+        }
+
+
+
+
+
+    </script>
+}
+
