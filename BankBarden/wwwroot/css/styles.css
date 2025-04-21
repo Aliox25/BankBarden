@@ -11317,6 +11317,9 @@ section#contact form#contactForm :-ms-input-placeholder {
 .add-top-padding {
     padding-top: 10rem;
 }
+.add-top-padding-2 {
+    padding-top: 30rem;
+}
 
 .add-bot-padding {
     padding-bottom: 5rem;

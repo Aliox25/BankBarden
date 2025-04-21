@@ -27,11 +27,11 @@ namespace BankBarden.Pages.Transactions
         public decimal Balance { get; set; }
 
 
-        [Range(1, 5000, ErrorMessage = "Amount can only be between 1 and 5000!")]
+        [Range(1, 5000, ErrorMessage = "Amount can only be between 1 and 5000")]
         public decimal Amount { get; set; }
         public DateTime DepositDate { get; set; }
 
-        [MaxLength(50, ErrorMessage ="Comment is to long!")]
+        [MaxLength(50, ErrorMessage ="Comment is to long")]
         public string? Comment { get; set; }
 
         public void OnGet(int accountId, int customerId)

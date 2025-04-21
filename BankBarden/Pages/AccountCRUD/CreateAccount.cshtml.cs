@@ -25,6 +25,7 @@ namespace BankBarden.Pages.AccountCRUD
 
         [Range(1, 99, ErrorMessage = "Please choose a valid frequency option")]
         public AccFrequencyE Frequency { get; set; }
+
         public List<SelectListItem> Frequencies { get; set; }
 
         public string AccountType { get; set; }
