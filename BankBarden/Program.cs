@@ -39,6 +39,8 @@ public class Program
         builder.Services.AddTransient<ITransacrionHistoryS, TransacrionHistoryS>();
 
 
+        builder.Services.AddResponseCaching();
+
         var app = builder.Build();
 
         using (var scope = app.Services.CreateScope())
@@ -68,6 +70,8 @@ public class Program
         app.MapStaticAssets();
         app.MapRazorPages()
            .WithStaticAssets();
+
+        app.UseResponseCaching();
 
         app.Run();
     }

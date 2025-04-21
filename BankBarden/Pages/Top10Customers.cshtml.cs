@@ -7,6 +7,7 @@ using Service.CustomerService;
 
 namespace BankBarden.Pages
 {
+    [ResponseCache(Duration = 30, VaryByQueryKeys = new[]{ "country" })]
     public class Top10CustomersModel : PageModel
     {
         private readonly IAllCustomerS _allCustS;
@@ -18,6 +19,7 @@ namespace BankBarden.Pages
 
         public List<AllCustomersViewModel> Customers { get; set; }
         public CountryE Country { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
         public void OnGet(CountryE country)
         {
             Country = country;
