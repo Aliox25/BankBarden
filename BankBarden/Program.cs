@@ -6,6 +6,7 @@ using Service.CustomerService;
 using Service.TransactionsService;
 using Service.AccountService;
 using Service.CustomerService.CRUDCustomer;
+using System.Reflection;
 
 namespace BankBarden;
 
@@ -38,6 +39,7 @@ public class Program
         builder.Services.AddTransient<IEditCustomerS, EditCustomerS>();
         builder.Services.AddTransient<ITransacrionHistoryS, TransacrionHistoryS>();
 
+        builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         builder.Services.AddResponseCaching();
 
