@@ -23,6 +23,7 @@ namespace DataAccessLayer.Models
             //_dbContext.Database.Migrate();
             SeedRoles();
             SeedUsers();
+            _dbContext.SaveChanges();
         }
 
         // Här finns möjlighet att uppdatera dina användares loginuppgifter
