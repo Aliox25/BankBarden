@@ -12,5 +12,6 @@ namespace DataAccessLayer.DTOs
         public int Id { get; set; }
         public decimal Balance { get; set; }
         public AccFrequencyE Frequency { get; set; }
+        public string AccountType { get; set; }
     }
 }

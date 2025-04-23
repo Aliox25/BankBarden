@@ -19,9 +19,9 @@ namespace Service.CountryService
             _dbContext = dbContext;
         }
 
-        public List<CountryDTO> GetCountrys()
+        public IQueryable<CountryDTO> GetCountrys()
         {
-            return _dbContext.Customers
+            var quarry = _dbContext.Customers
             .Include(d => d.Dispositions)
             .ThenInclude(a => a.Account)
             .GroupBy(c => c.Country)
@@ -30,8 +30,9 @@ namespace Service.CountryService
                 Country = (CountryE)Convert.ToInt32(c.Key),
                 UserCount = c.Count(),
                 CountryTotalMoney = c.Sum(c => c.Dispositions.Sum(d => d.Account.Balance))
-            })
-            .ToList();
+            });
+
+            return quarry;            
         }
     }
 }

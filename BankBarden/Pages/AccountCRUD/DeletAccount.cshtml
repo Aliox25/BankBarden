@@ -1,0 +1,50 @@
+﻿@page
+@model BankBarden.Pages.AccountCRUD.DeletAccountModel
+@{
+}
+
+<div class="add-top-padding">
+    <div class="container body-container">
+
+        <div class="box-border add-smal-pading-around">
+
+            <h2><span class="field-validation-error" asp-validation-for="Balance"></span></h2>
+
+            <h1>Account Id: @Model.AccountId</h1>
+            <h2>@Model.Balance</h2>
+            <h3>Frequency: @Model.Frequency</h3>
+            <h3>Type: @Model.AccountType</h3>
+
+            <div class="mb-3 d-flex justify-content-start">
+                <form method="post">
+
+                    <input type="hidden" name="CustomerId" value="@Model.CustomerId" />
+                    <input type="hidden" name="AccountId" value="@Model.AccountId" />
+                    <input type="hidden" name="Balance" value="@Model.Balance" />
+                    <input type="hidden" name="Frequency" value="@Model.Frequency" />
+                    <input type="hidden" name="AccountType" value="@Model.AccountType" />
+
+                    <button type="submit"
+                            class="btn btn-danger mx-1"
+                            style="width:120px">
+                        Delete
+                    </button>
+
+                    <a asp-page="/CustomerInfo"
+                       asp-route-custId="@Model.CustomerId"
+                       class="btn btn-secondary mx-1"
+                       style="width:120px">
+                        Go Back
+                    </a>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--TODO validation not working-->
+@* @section Scripts
+{
+    <partial name="Shared/_ValidationScriptsPartial" />
+} *@

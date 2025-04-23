@@ -11347,3 +11347,9 @@ section#contact form#contactForm :-ms-input-placeholder {
 .footer {
     height: 10vh;
 }
+.border-black-3 {
+    border: 3px solid #000;
+}
+.border-black-1 {
+    border: 1px solid #000;
+}

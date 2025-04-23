@@ -46,6 +46,7 @@ namespace BankBarden.Pages.AccountCRUD
                 return RedirectToPage("/CustomerInfo", new { custId = custumarId });
             }
             Frequencies = _accountS.FillFrequencyList();
+            AccountTypes = _accountS.FillAccoutnTypeList();
             return Page();
         }
     }

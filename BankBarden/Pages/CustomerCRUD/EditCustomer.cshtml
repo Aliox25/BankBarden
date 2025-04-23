@@ -9,6 +9,7 @@
 
         <form method="post">
             <input type="hidden" name="custumarId" value="@Model.CustomerId" />
+
             <div class="mb-3">
                 <label class="form-label">FirstName</label>
                 <input type="text" class="form-control" asp-for="FirstName" />
@@ -80,7 +81,9 @@
         </form>
     </div>
 </div>
-@section Scripts
+
+<!--TODO validation not working-->
+@* @section Scripts
 {
     <partial name="Shared/_ValidationScriptsPartial" />
-}
+} *@

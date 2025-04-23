@@ -24,25 +24,25 @@
         <div class="row">
             @foreach (var country in Model.Countries)
             {
-                <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="col-lg-6 col-sm-10 mb-4">
                     <!-- Portfolio item 1-->
-                    <div class="portfolio-item">
+                    <div class="portfolio-item border-black-3">
                         @if (User.IsInRole("Cashier"))
                         {
-                            <a class="portfolio-link nav-link" asp-page="Customers" asp-route-country="@country.Country">
+                            <a class="portfolio-link nav-link border-black-3" asp-page="Customers" asp-route-country="@country.Country">
                                 <partial name="_countryLinks" model="country" />
                             </a>
                         }
                         else 
                         {
-                            <a class="portfolio-link nav-link" asp-page="Top10Customers" asp-route-country="@country.Country">
+                            <a class="portfolio-link nav-link border-black-1" asp-page="Top10Customers" asp-route-country="@country.Country">
                                 <partial name="_countryLinks" model="country" />
                             </a>
                         }
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">@country.Country</div>
                             <div class="portfolio-caption-subheading text-muted">@country.UserCount</div>
-                            <div class="portfolio-caption-subheading text-muted">@country.CountryTotalMoney Kr</div>
+                            <div class="portfolio-caption-subheading text-muted">@country.CountryTotalMoney</div>
                         </div>
                     </div>
                 </div>

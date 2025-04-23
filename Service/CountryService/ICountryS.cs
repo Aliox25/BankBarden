@@ -9,6 +9,6 @@ namespace Service.CountryService
 {
     public interface ICountryS
     {
-        List<CountryDTO> GetCountrys();
+        IQueryable<CountryDTO> GetCountrys();
     }
 }

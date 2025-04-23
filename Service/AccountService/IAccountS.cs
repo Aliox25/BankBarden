@@ -21,6 +21,7 @@ namespace Service.AccountService
         AccountDTO GetSingelAccount(int accountId);
 
         int GetTotalAccounts(int customerId);
+        void DeleteAccount(int accountId);
 
     }
 }

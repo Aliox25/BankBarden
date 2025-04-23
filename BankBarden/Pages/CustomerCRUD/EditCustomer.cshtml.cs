@@ -35,6 +35,7 @@ namespace BankBarden.Pages.CustomerCRUD
         public GenderE Gender { get; set; }
         public List<SelectListItem> Genders { get; set; }
 
+
         [Required(ErrorMessage = "Please enter a street address")]
         public string Streetaddress { get; set; }
 
@@ -44,8 +45,10 @@ namespace BankBarden.Pages.CustomerCRUD
         public string Zipcode { get; set; }
 
         [Range(1, 99, ErrorMessage = "Please choose a valid country")]
+
         public CountryE Country { get; set; }
         public List<SelectListItem> Countries { get; set; }
+
 
         public void OnGet(int custumarId)
         {
@@ -81,6 +84,7 @@ namespace BankBarden.Pages.CustomerCRUD
                 return RedirectToPage("/CustomerInfo", new { custId = custumarId });
 
             }
+            CustomerId = custumarId;
             Genders = _customerS.FillGenderlist();
             Countries = _customerS.FillCountrylist();
             return Page();

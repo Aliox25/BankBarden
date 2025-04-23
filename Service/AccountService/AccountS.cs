@@ -56,12 +56,14 @@ namespace Service.AccountService
 
         public AccountDTO GetSingelAccount(int accountId)
         {
-            var quarry = _dbContext.Accounts.First(a => a.AccountId == accountId);
+            var quarry = _dbContext.Accounts.Include(d => d.Dispositions).First(a => a.AccountId == accountId);
 
             return new AccountDTO
             {
                 Id = quarry.AccountId,
-                Balance = quarry.Balance
+                Balance = quarry.Balance,
+                Frequency = quarry.Frequency,
+                AccountType = quarry.Dispositions.First().Type
             };
         }
 
@@ -111,6 +113,22 @@ namespace Service.AccountService
 
         }
 
+        public void DeleteAccount(int accountId)
+        {
+            var acc = _dbContext.Accounts
+                .FirstOrDefault(a => a.AccountId == accountId);
+            var desp = _dbContext.Dispositions
+                .FirstOrDefault(a => a.AccountId == accountId);
+            var tran = _dbContext.Transactions
+                .Where(a => a.AccountId == accountId)
+                .ToList();
+
+            _dbContext.Dispositions.Remove(desp);
+            _dbContext.Transactions.RemoveRange(tran);
+            _dbContext.Accounts.Remove(acc);
+
+            Update();
+        }
         public void Update()
         {
             _dbContext.SaveChanges();

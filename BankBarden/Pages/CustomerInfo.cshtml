@@ -52,6 +52,7 @@
                         <th scope="col">Withdrawal</th>
                         <th scope="col">Transfer</th>
                         <th scope="col">Transactions</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -89,6 +90,16 @@
                                 </a>
 
                             </td>
+
+                            <td>
+                                <a asp-route-accountId="@account.Id"
+                                   asp-route-customerId="@Model.Customer.Id"
+                                   asp-page="/AccountCRUD/DeletAccount"
+                                   class="btn btn-danger mx-1">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+
                         </tr>
                     }
                 </tbody>
